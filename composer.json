@@ -1,0 +1,24 @@
+{
+    "name": "root/car-for-rent",
+    "autoload": {
+        "psr-4": {
+            "Tringuyen\\CarForRent\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tri Nguyen",
+            "email": "khai.tri@nfq.asia"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "squizlabs/php_codesniffer": "3.*",
+        "phpunit/phpunit": "^9"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "Tests/"
+        }
+    }
+}
