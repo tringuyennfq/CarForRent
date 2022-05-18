@@ -10,7 +10,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" doNotAsk="true">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable path="composer" />
@@ -72,7 +72,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/var/www/unlock",
+    "last_opened_file_path": "/var/www/CarForRent",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -100,7 +100,8 @@
       <option name="presentableId" value="Default" />
       <updated>1652769294348</updated>
       <workItem from="1652769296639" duration="4360000" />
-      <workItem from="1652775269923" duration="7910000" />
+      <workItem from="1652775269923" duration="8258000" />
+      <workItem from="1652841101085" duration="23838000" />
     </task>
     <servers />
   </component>

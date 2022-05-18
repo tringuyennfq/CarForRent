@@ -1,17 +1,19 @@
 <?php
 
 use Tringuyen\CarForRent\bootstrap\Application;
+use Tringuyen\CarForRent\controller\SiteController;
+use Tringuyen\CarForRent\database\DatabaseConnect;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', '1');
+$conn = DatabaseConnect::getConnection();
 
-$testapp = new Application(dirname(__DIR__));
-$testapp->router->get('/','home');
-$testapp->router->get('/about','about');
-$testapp->router->get('/contact', 'contact');
+include_once '../src/Route/routes.php';
+$app = new Application(dirname(__DIR__));
 
-$testapp->run();
+
+$app->run();
 
 

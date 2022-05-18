@@ -4,35 +4,38 @@ namespace Tringuyen\CarForRent\bootstrap;
 
 class Router
 {
-    public Request $request;
-    protected array $routes = [];
+    public static Request $request;
+    public static Response $response;
+    protected static array $routes = [];
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, Response $response)
     {
-        $this->request = $request;
+        self::$request = $request;
+        self::$response = $response;
     }
 
-    public function get($path, $callback)
+    public static function get($path, $callback)
     {
-        $this->routes['GET'][$path] = $callback;
+        self::$routes['GET'][$path] = $callback;
+    }
+    public static function post($path, $callback)
+    {
+        self::$routes['POST'][$path] = $callback;
     }
 
-    public function resolve()
+    public static function resolve()
     {
-        $path = $this->request->getPath();
-        $method = $this->request->getMethod();
-        $callback = $this->routes[$method][$path] ?? false;
+        $path = self::$request->getPath();
+        $method = self::$request->getMethod();
+        $callback = self::$routes[$method][$path] ?? false;
         if ($callback === false) {
-            return "Not found";
+            self::$response->setStatusCode(404);
+            return View::renderView('404');
         }
         if (is_string($callback)) {
-            return $this->renderView($callback);
+            return View::renderView($callback);
         }
         return call_user_func($callback);
     }
 
-    public function renderView(string $view)
-    {
-        include_once __DIR__ . "/../view/$view.php";
-    }
 }
