@@ -2,10 +2,12 @@
 ?>
 <div class="login-wrapper">
     <form class="form-signin" action="" method="post">
-        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
+             height="72">
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email address" required
+               autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password" required>
         <div class="checkbox mb-3">
@@ -14,6 +16,6 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2022 <?php echo $name;?></p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2022 <?php echo $name; ?></p>
     </form>
 </div>

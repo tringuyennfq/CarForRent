@@ -5,7 +5,7 @@ namespace Tringuyen\CarForRent\bootstrap;
 class View
 {
 
-    public static function renderView(string $view, $params= [])
+    public static function renderView(string $view, $params = [])
     {
         $layoutContent = self::layoutContent();
         $viewContent = self::viewContent($view, $params);
@@ -23,8 +23,7 @@ class View
 
     protected static function viewContent($view, $params)
     {
-        foreach ($params as $key => $value)
-        {
+        foreach ($params as $key => $value) {
             $$key = $value;
         }
         ob_start();

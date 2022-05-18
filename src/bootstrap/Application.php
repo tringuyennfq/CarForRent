@@ -27,12 +27,13 @@ class Application
 
     public function __construct($rootPath)
     {
-        self::$ROOT_DIR=$rootPath;
+        self::$ROOT_DIR = $rootPath;
         self::$app = $this;
         $this->response = new Response();
         $this->request = new Request();
-        $this->router = new Router($this->request,$this->response);
+        $this->router = new Router($this->request, $this->response);
     }
+
     public function run()
     {
         echo $this->router->resolve();

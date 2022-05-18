@@ -18,6 +18,7 @@ class Router
     {
         self::$routes['GET'][$path] = $callback;
     }
+
     public static function post($path, $callback)
     {
         self::$routes['POST'][$path] = $callback;
