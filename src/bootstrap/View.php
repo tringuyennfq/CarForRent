@@ -10,8 +10,6 @@ class View
         $layoutContent = self::layoutContent();
         $viewContent = self::viewContent($view, $params);
         return str_replace('{{content}}', $viewContent, $layoutContent);
-
-
     }
 
     protected static function layoutContent()
@@ -29,5 +27,9 @@ class View
         ob_start();
         include_once Application::$ROOT_DIR . "/src/view/$view.php";
         return ob_get_clean();
+    }
+    public static function redirect($url)
+    {
+        header("Location: $url");
     }
 }

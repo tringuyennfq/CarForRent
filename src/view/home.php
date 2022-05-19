@@ -1,4 +1,5 @@
 <?php
+
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -16,15 +17,21 @@
                     <a class="nav-link" href="contact">Contact</a>
                 </li>
                 <li>
-                    <button type="button" class="btn btn-primary" id="btn-login" onclick="location.href='login'">Login
-                    </button>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    echo '<button type="button" class="btn btn-primary home-btn" id="btn-logout" onclick="location.href=\'logout\'">Logout</button>';
+                } else {
+                    echo '<button type="button" class="btn btn-primary home-btn" id="btn-login" onclick="location.href=\'login\'">Login</button>';
+                }
+                ?>
                 </li>
+
             </ul>
         </div>
     </div>
 </nav>
 
-<h1><?php echo $name . "'s"; ?> Homepage</h1>
+<h1><?= $name . "'s"; ?> Homepage</h1>
 
 <div class="album py-5 bg-light">
     <div class="container">

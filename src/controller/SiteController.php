@@ -2,9 +2,10 @@
 
 namespace Tringuyen\CarForRent\controller;
 
+use Dotenv\Dotenv;
 use Tringuyen\CarForRent\bootstrap\View;
 
-class  SiteController
+class SiteController
 {
     public function home()
     {
@@ -13,18 +14,4 @@ class  SiteController
         ];
         return View::renderView('home', $params);
     }
-
-    public function login()
-    {
-        $params = [
-            'name' => "Tri Nguyen"
-        ];
-        return View::renderView('login', $params);
-    }
-
-    public function handleLogin()
-    {
-        return "Handling Login";
-    }
-
 }

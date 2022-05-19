@@ -6,6 +6,8 @@ use Tringuyen\CarForRent\database\DatabaseConnect;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+session_start();
+
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 $conn = DatabaseConnect::getConnection();

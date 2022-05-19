@@ -66,11 +66,11 @@ body {
     width: 100% !important;
 }
 
-#btn-login {
+
+.home-btn{
     position: absolute;
     right:10px ;
 }
-
 
 
 .wrapper-404{
