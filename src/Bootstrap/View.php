@@ -1,6 +1,6 @@
 <?php
 
-namespace Tringuyen\CarForRent\bootstrap;
+namespace Tringuyen\CarForRent\Bootstrap;
 
 class View
 {
@@ -15,7 +15,7 @@ class View
     protected static function layoutContent()
     {
         ob_start();
-        include_once Application::$ROOT_DIR . "/src/view/layouts/main.php";
+        include_once Application::$ROOT_DIR . "/src/View/layouts/main.php";
         return ob_get_clean();
     }
 
@@ -25,7 +25,7 @@ class View
             $$key = $value;
         }
         ob_start();
-        include_once Application::$ROOT_DIR . "/src/view/$view.php";
+        include_once Application::$ROOT_DIR . "/src/View/$view.php";
         return ob_get_clean();
     }
     public static function redirect($url)

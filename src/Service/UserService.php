@@ -1,11 +1,11 @@
 <?php
 
-namespace Tringuyen\CarForRent\service;
+namespace Tringuyen\CarForRent\Service;
 
 use Tringuyen\CarForRent\Exception\ValidationException;
-use Tringuyen\CarForRent\model\UserLoginRequest;
-use Tringuyen\CarForRent\model\UserLoginResponse;
-use Tringuyen\CarForRent\repository\UserRepository;
+use Tringuyen\CarForRent\Model\UserLoginRequest;
+use Tringuyen\CarForRent\Model\UserLoginResponse;
+use Tringuyen\CarForRent\Repository\UserRepository;
 
 class UserService
 {

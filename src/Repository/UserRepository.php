@@ -1,8 +1,8 @@
 <?php
 
-namespace Tringuyen\CarForRent\repository;
+namespace Tringuyen\CarForRent\Repository;
 
-use Tringuyen\CarForRent\model\User;
+use Tringuyen\CarForRent\Model\User;
 
 class UserRepository
 {

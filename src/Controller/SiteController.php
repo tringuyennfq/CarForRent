@@ -1,9 +1,9 @@
 <?php
 
-namespace Tringuyen\CarForRent\controller;
+namespace Tringuyen\CarForRent\Controller;
 
 use Dotenv\Dotenv;
-use Tringuyen\CarForRent\bootstrap\View;
+use Tringuyen\CarForRent\Bootstrap\View;
 
 class SiteController
 {

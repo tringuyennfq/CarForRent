@@ -1,14 +1,14 @@
 <?php
 
-namespace Tringuyen\CarForRent\controller;
+namespace Tringuyen\CarForRent\Controller;
 
-use Tringuyen\CarForRent\bootstrap\Application;
-use Tringuyen\CarForRent\bootstrap\View;
-use Tringuyen\CarForRent\database\DatabaseConnect;
+use Tringuyen\CarForRent\Bootstrap\Application;
+use Tringuyen\CarForRent\Bootstrap\View;
+use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Exception\ValidationException;
-use Tringuyen\CarForRent\model\UserLoginRequest;
-use Tringuyen\CarForRent\repository\UserRepository;
-use Tringuyen\CarForRent\service\UserService;
+use Tringuyen\CarForRent\Model\UserLoginRequest;
+use Tringuyen\CarForRent\Repository\UserRepository;
+use Tringuyen\CarForRent\Service\UserService;
 
 class UserController
 {

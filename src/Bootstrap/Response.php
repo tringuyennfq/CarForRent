@@ -1,6 +1,6 @@
 <?php
 
-namespace Tringuyen\CarForRent\bootstrap;
+namespace Tringuyen\CarForRent\Bootstrap;
 
 class Response
 {

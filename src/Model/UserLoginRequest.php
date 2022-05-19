@@ -1,6 +1,6 @@
 <?php
 
-namespace Tringuyen\CarForRent\model;
+namespace Tringuyen\CarForRent\Model;
 
 class UserLoginRequest
 {

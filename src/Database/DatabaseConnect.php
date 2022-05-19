@@ -1,6 +1,6 @@
 <?php
 
-namespace Tringuyen\CarForRent\database;
+namespace Tringuyen\CarForRent\Database;
 
 use Dotenv\Dotenv;
 use PDO;

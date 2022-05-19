@@ -1,8 +1,8 @@
 <?php
 
-use Tringuyen\CarForRent\bootstrap\Router;
-use Tringuyen\CarForRent\controller\SiteController;
-use Tringuyen\CarForRent\controller\UserController;
+use Tringuyen\CarForRent\Bootstrap\Router;
+use Tringuyen\CarForRent\Controller\SiteController;
+use Tringuyen\CarForRent\Controller\UserController;
 
 Router::get('/', [new SiteController(),'home']);
 Router::get('/home', [new SiteController(),'home']);
