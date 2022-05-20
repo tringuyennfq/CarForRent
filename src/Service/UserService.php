@@ -8,7 +8,6 @@ use Tringuyen\CarForRent\Model\UserLoginResponse;
 use Tringuyen\CarForRent\Repository\UserRepository;
 use Tringuyen\CarForRent\Validator\LoginValidator;
 
-
 class UserService
 {
     private $userRepository;

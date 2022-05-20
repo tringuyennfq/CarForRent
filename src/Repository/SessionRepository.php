@@ -2,7 +2,6 @@
 
 namespace Tringuyen\CarForRent\Repository;
 
-
 use PDO;
 
 class SessionRepository
@@ -29,5 +28,4 @@ class SessionRepository
     {
         $this->connection = $connection;
     }
-
 }

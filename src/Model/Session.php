@@ -22,5 +22,4 @@ class Session
     {
         return $this->userid;
     }
-
 }

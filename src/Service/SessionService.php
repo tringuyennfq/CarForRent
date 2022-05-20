@@ -23,7 +23,5 @@ class SessionService
         $session =  new Session();
         $session->id = uniqid();
         $session->userid = $userId;
-
-
     }
 }
