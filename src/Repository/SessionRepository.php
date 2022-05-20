@@ -3,6 +3,8 @@
 namespace Tringuyen\CarForRent\Repository;
 
 
+use PDO;
+
 class SessionRepository
 {
     private $connection;

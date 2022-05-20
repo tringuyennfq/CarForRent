@@ -2,6 +2,7 @@
 
 namespace Tringuyen\CarForRent\Service;
 
+use Tringuyen\CarForRent\Model\Session;
 use Tringuyen\CarForRent\Repository\SessionRepository;
 use Tringuyen\CarForRent\Repository\UserRepository;
 
@@ -15,5 +16,14 @@ class SessionService
     {
         $this->userRepository = $userRepository;
         $this->sessionRepository = $sessionRepository;
+    }
+
+    public function create($userId)
+    {
+        $session =  new Session();
+        $session->id = uniqid();
+        $session->userid = $userId;
+
+
     }
 }

@@ -17,7 +17,7 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <?php if (isset($error)) {
+        <?php if (isset($error) && $error != '') {
             echo '<div class="alert alert-danger" role="alert">';
             echo $error;
             echo '</div>';

@@ -67,11 +67,18 @@ body {
 }
 
 
-.home-btn{
+#btn-wrapper{
     position: absolute;
-    right:10px ;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
 }
-
+#hello{
+    margin-block: auto;
+}
 
 .wrapper-404{
     width: 100%;

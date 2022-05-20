@@ -8,5 +8,5 @@ Router::get('/', [new SiteController(),'home']);
 Router::get('/home', [new SiteController(),'home']);
 Router::get('/contact', 'contact');
 Router::get('/login', [new UserController(),'login']);
-Router::post('/login', [new UserController(),'handleLogin']);
-Router::get('/logout', [new UserController(),'logout']);
+Router::post('/login', [new UserController(),'login']);
+Router::post('/logout', [new UserController(),'logout']);

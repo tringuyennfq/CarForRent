@@ -16,16 +16,20 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact">Contact</a>
                 </li>
-                <li>
+
+                <li id="btn-wrapper">
                 <?php
                 if (isset($_SESSION['username'])) {
-                    echo '<button type="button" class="btn btn-primary home-btn" id="btn-logout" onclick="location.href=\'logout\'">Logout</button>';
+                    echo '<p id="hello">Hello '.$_SESSION['username'].'</p>';
+                    echo '<form action="/logout" method="post">';
+                    echo '<button type="submit" class="btn btn-primary home-btn" id="btn-logout"">Logout</button>';
+                    echo '</form>';
                 } else {
+
                     echo '<button type="button" class="btn btn-primary home-btn" id="btn-login" onclick="location.href=\'login\'">Login</button>';
                 }
                 ?>
                 </li>
-
             </ul>
         </div>
     </div>
