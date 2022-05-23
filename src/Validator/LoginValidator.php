@@ -10,7 +10,7 @@ class LoginValidator
     /**
      * @throws ValidationException
      */
-    public function validateUserLogin(UserLoginRequest $request)
+    public function validateUserLogin(UserLoginRequest $request): bool
     {
         if (
             empty($request->username) ||
@@ -18,5 +18,6 @@ class LoginValidator
         ) {
             throw new ValidationException("Username and password cannot be empty");
         }
+        return true;
     }
 }
