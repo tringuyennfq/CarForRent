@@ -16,7 +16,7 @@ class UserRepository
         $this->connection = DatabaseConnect::getConnection();
         $this->user = $user;
     }
-    public function findByUsername(string $username)
+    public function findByUsername(string $username): ?User
     {
         $statement = $this->connection->prepare("SELECT * FROM user WHERE user_username = ? ");
         $statement->execute([$username]);

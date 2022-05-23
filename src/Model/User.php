@@ -4,12 +4,12 @@ namespace Tringuyen\CarForRent\Model;
 
 class User
 {
-    protected $id;
-    protected $username;
-    protected $password;
+    protected int $id;
+    protected string $username;
+    protected string $password;
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getId()
     {
@@ -17,7 +17,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getUsername()
     {
@@ -25,7 +25,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getPassword()
     {
@@ -33,25 +33,25 @@ class User
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
      */
-    public function setId($id): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }
 
     /**
-     * @param mixed $username
+     * @param string $username
      */
-    public function setUsername($username): void
+    public function setUsername(string $username): void
     {
         $this->username = $username;
     }
 
     /**
-     * @param mixed $password
+     * @param string $password
      */
-    public function setPassword($password): void
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }

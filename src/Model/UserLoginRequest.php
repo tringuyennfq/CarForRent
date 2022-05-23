@@ -48,10 +48,11 @@ class UserLoginRequest extends Request
         $this->password = '';
     }
 
-    public function fromArray()
+    public function fromArray(): static
     {
         $body = parent::getBody();
         $this->username = $body['username'] ?? '';
         $this->password = $body['password'] ?? '';
+        return $this;
     }
 }

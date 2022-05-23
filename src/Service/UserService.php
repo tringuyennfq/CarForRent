@@ -3,11 +3,9 @@
 namespace Tringuyen\CarForRent\Service;
 
 use Tringuyen\CarForRent\Exception\LoginException;
-use Tringuyen\CarForRent\Exception\ValidationException;
 use Tringuyen\CarForRent\Model\UserLoginRequest;
 use Tringuyen\CarForRent\Model\UserLoginResponse;
 use Tringuyen\CarForRent\Repository\UserRepository;
-use Tringuyen\CarForRent\Validator\LoginValidator;
 
 class UserService
 {
