@@ -3,29 +3,33 @@
 namespace Tringuyen\CarForRent\Controller;
 
 use Tringuyen\CarForRent\Bootstrap\Application;
+use Tringuyen\CarForRent\Bootstrap\Request;
+use Tringuyen\CarForRent\Bootstrap\Response;
 use Tringuyen\CarForRent\Bootstrap\View;
 use Tringuyen\CarForRent\Database\DatabaseConnect;
+use Tringuyen\CarForRent\Exception\LoginException;
 use Tringuyen\CarForRent\Exception\ValidationException;
 use Tringuyen\CarForRent\Model\UserLoginRequest;
+use Tringuyen\CarForRent\Model\UserLoginResponse;
 use Tringuyen\CarForRent\Repository\SessionRepository;
 use Tringuyen\CarForRent\Repository\UserRepository;
 use Tringuyen\CarForRent\Service\SessionService;
 use Tringuyen\CarForRent\Service\UserService;
 use Tringuyen\CarForRent\Validator\LoginValidator;
 
-class UserController
+class UserLoginController
 {
-    private $userService;
-    private $sessionService;
+    private UserService $userService;
+    private UserLoginRequest $userLoginRequest;
+    private UserLoginResponse $userLoginResponse;
 
-    public function __construct()
+
+    public function __construct(UserService $userService, UserLoginRequest $request, UserLoginResponse $response)
     {
-        $connection = DatabaseConnect::getConnection();
-        $userRepository = new UserRepository($connection);
-        $this->userService = new UserService($userRepository);
+        $this->userService = $userService;
+        $this->userLoginRequest = $request;
+        $this->userLoginResponse = $response;
 
-        $sessionRepository = new SessionRepository($connection);
-        $this->sessionService = new SessionService($sessionRepository, $userRepository);
     }
 
     public function login()
@@ -37,22 +41,19 @@ class UserController
 //            'error' => ''
 //        ]);
 
-        $body = Application::$app->request->getBody();
-        $request = new UserLoginRequest();
-        $request->username = $body['username'];
-        $request->password = $body['password'];
+        $this->userLoginRequest->fromArray();
         $errors = '';
 
         try {
-            if ($request->isPost()) {
+            if ($this->userLoginRequest->getMethod() === 'POST') {
                 $userLoginValidator = new LoginValidator();
-                $userLoginValidator->validateUserLogin($request);
-                $response = $this->userService->login($request);
-                $_SESSION['username'] = $response->user->username;
+                $userLoginValidator->validateUserLogin($this->userLoginRequest);
+                $this->userLoginResponse = $this->userService->login($this->userLoginRequest);
+                $_SESSION['username'] = $this->userLoginResponse->getUser()->getUsername();
 
                 View::redirect('/');
             }
-        } catch (ValidationException $exception) {
+        } catch (ValidationException|LoginException $exception) {
             // logging
             $errors = $exception->getMessage();
         }

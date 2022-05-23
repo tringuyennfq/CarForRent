@@ -2,29 +2,32 @@
 
 namespace Tringuyen\CarForRent\Repository;
 
+use PDO;
+use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Model\User;
 
 class UserRepository
 {
-    private $connection;
+    private PDO $connection;
+    private User $user;
 
-    public function __construct($connection)
+    public function __construct(User $user)
     {
-        $this->connection = $connection;
+        $this->connection = DatabaseConnect::getConnection();
+        $this->user = $user;
     }
-    public function findByUsername($username)
+    public function findByUsername(string $username)
     {
         $statement = $this->connection->prepare("SELECT * FROM user WHERE user_username = ? ");
         $statement->execute([$username]);
 
         try {
-            $user = new User();
             if ($row = $statement->fetch()) {
-                $user->id = $row['user_ID'];
-                $user->username = $row['user_username'];
-                $user->password = $row['user_password'];
+                $this->user->setId($row['user_ID']);
+                $this->user->setUsername($row['user_username']);
+                $this->user->setPassword($row['user_password']);
 
-                return $user;
+                return $this->user;
             } else {
                 return null;
             }

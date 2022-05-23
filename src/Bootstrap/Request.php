@@ -25,6 +25,9 @@ class Request
         return $_SERVER['REQUEST_METHOD'];
     }
 
+    /**
+     * @return array
+     */
     public function getBody()
     {
         $body = [];

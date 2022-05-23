@@ -4,15 +4,15 @@ namespace Tringuyen\CarForRent\Model;
 
 use Tringuyen\CarForRent\Bootstrap\Request;
 
-class UserLoginRequest
+class UserLoginRequest extends Request
 {
-    public $username;
-    public $password;
+    protected $username;
+    protected $password;
 
     /**
      * @return mixed
      */
-    public function getUsername()
+    public function getUsername(): mixed
     {
         return $this->username;
     }
@@ -20,7 +20,7 @@ class UserLoginRequest
     /**
      * @param mixed $username
      */
-    public function setUsername($username): void
+    public function setUsername(mixed $username): void
     {
         $this->username = $username;
     }
@@ -28,7 +28,7 @@ class UserLoginRequest
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getPassword(): mixed
     {
         return $this->password;
     }
@@ -42,18 +42,16 @@ class UserLoginRequest
     }
 
 
-    public function __construct($username, $password)
+    public function __construct()
     {
-        $this->username = $username;
-        $this->password = $password;
+        $this->username = '';
+        $this->password = '';
     }
 
-    public function isPost(): bool
+    public function fromArray()
     {
-        $request = new Request();
-        if ($request->getMethod() === 'POST') {
-            return true;
-        }
-        return false;
+        $body = parent::getBody();
+        $this->username = $body['username'] ?? '';
+        $this->password = $body['password'] ?? '';
     }
 }

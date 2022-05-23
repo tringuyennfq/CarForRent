@@ -6,7 +6,7 @@ use PDO;
 
 class SessionRepository
 {
-    private $connection;
+    private PDO $connection;
 
     public function __construct(PDO $connection)
     {

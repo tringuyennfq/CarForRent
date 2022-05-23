@@ -13,8 +13,8 @@ class LoginValidator
     public function validateUserLogin(UserLoginRequest $request): bool
     {
         if (
-            empty($request->username) ||
-            empty($request->password)
+            empty($request->getUsername()) ||
+            empty($request->getPassword())
         ) {
             throw new ValidationException("Username and password cannot be empty");
         }

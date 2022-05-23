@@ -24,8 +24,12 @@ class Router
         self::$routes['POST'][$path] = $callback;
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     public static function resolve()
     {
+        $container = new Container();
         $path = self::$request->getPath();
         $method = self::$request->getMethod();
         $callback = self::$routes[$method][$path] ?? false;
@@ -36,9 +40,11 @@ class Router
         if (is_string($callback)) {
             return View::renderView($callback);
         }
-        if (is_array($callback)) {
-            $callback[0] = new $callback[0]();
-        }
-        return call_user_func($callback);
+
+        $currentController = $callback[0];
+        $action = $callback[1];
+
+        $controller = $container->make($currentController);
+        return $controller->$action();
     }
 }
