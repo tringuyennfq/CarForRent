@@ -10,19 +10,17 @@ use Tringuyen\CarForRent\Model\UserLoginRequest;
 class UserLoginRequestTest extends TestCase
 {
     /**
+     * @test
      * @return void
      */
     public function testFromArray()
     {
-        $mockRequest = $this->createMock(Request::class);
         $array = [
             'username'=>'khaitri',
             'password'=>'asd'
         ];
-        $mockRequest->method("getBody")->willReturn($array);
-        $mockRequest->method("getMethod")->willReturn('POST');
         $userLoginRequestTest = new UserLoginRequest();
-        $result = $userLoginRequestTest->fromArray();
+        $result = $userLoginRequestTest->fromArray($array);
         $expected = new UserLoginRequest();
         $expected->setUsername('khaitri');
         $expected->setPassword('asd');

@@ -4,22 +4,56 @@ namespace Tringuyen\CarForRent\Model;
 
 class Session
 {
-    public $id;
-    public $userid;
+    protected $sessID;
+    protected $userID;
+    protected $sessLifetime;
 
     /**
      * @return mixed
      */
-    public function getId()
+    public function getSessID()
     {
-        return $this->id;
+        return $this->sessID;
+    }
+
+    /**
+     * @param mixed $sessID
+     */
+    public function setSessID($sessID): void
+    {
+        $this->sessID = $sessID;
     }
 
     /**
      * @return mixed
      */
-    public function getUserid()
+    public function getUserID()
     {
-        return $this->userid;
+        return $this->userID;
     }
+
+    /**
+     * @param mixed $userID
+     */
+    public function setUserID($userID): void
+    {
+        $this->userID = $userID;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSessLifetime()
+    {
+        return $this->sessLifetime;
+    }
+
+    /**
+     * @param mixed $sessLifetime
+     */
+    public function setSessLifetime($sessLifetime): void
+    {
+        $this->sessLifetime = $sessLifetime;
+    }
+
 }

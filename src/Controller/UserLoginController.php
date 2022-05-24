@@ -7,6 +7,7 @@ use Tringuyen\CarForRent\Exception\LoginException;
 use Tringuyen\CarForRent\Exception\ValidationException;
 use Tringuyen\CarForRent\Model\UserLoginRequest;
 use Tringuyen\CarForRent\Model\UserLoginResponse;
+use Tringuyen\CarForRent\Service\SessionService;
 use Tringuyen\CarForRent\Service\UserService;
 use Tringuyen\CarForRent\Validator\LoginValidator;
 
@@ -29,18 +30,19 @@ class UserLoginController
 
     public function login()
     {
-        $this->userLoginRequest->fromArray();
-        $errors = '';
-
         try {
+            $errors = '';
             if ($this->userLoginRequest->getMethod() === 'POST') {
+                $this->userLoginRequest->fromArray($this->userLoginRequest->getBody());
                 $this->userLoginValidator->validateUserLogin($this->userLoginRequest);
-                $this->userLoginResponse = $this->userService->login($this->userLoginRequest);
-                $_SESSION['username'] = $this->userLoginResponse->getUser()->getUsername();
-
-                View::redirect('/');
+                $isLoginSuccess = $this->userService->login($this->userLoginRequest);
+                if($isLoginSuccess){
+                    $_SESSION['username'] = $this->userLoginRequest->getUsername();
+                    View::redirect('/');
+                }
+                $errors = 'Username or Password is invalid!';
             }
-        } catch (ValidationException|LoginException $exception) {
+        } catch (\Exception $exception) {
             // logging
             $errors = $exception->getMessage();
         }
@@ -51,37 +53,7 @@ class UserLoginController
             'password' => $_POST['password'] ?? '',
             'error' => $errors
         ]);
-//             return View::renderView('User/login', [
-//            'title' => 'Login',
-//            'username' => $_POST['username'] ?? '',
-//            'password' => $_POST['password'] ?? '',
-//            'error' => ''
-//        ]);
-
     }
-
-//    public function handleLogin()
-//    {
-//        $body = Application::$app->request->getBody();
-//        $request = new UserLoginRequest();
-//        $request->username = $body['username'];
-//        $request->password = $body['password'];
-//
-//        try {
-//            $userLoginValidator = new LoginValidator();
-//            $userLoginValidator->validateUserLogin($request);
-//            $response = $this->userService->login($request);
-//            $_SESSION['username'] = $response->user->username;
-//            View::redirect('/');
-//        } catch (ValidationException $exception) {
-//            return View::renderView('User/login', [
-//             'title' => 'Login',
-//             'username' => $_POST['username'],
-//             'password' => $_POST['password'],
-//             'error' => $exception->getMessage()
-//            ]);
-//        }
-//    }
 
     public function logout()
     {

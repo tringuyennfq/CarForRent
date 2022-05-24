@@ -16,7 +16,7 @@ class UserRepository
         $this->connection = DatabaseConnect::getConnection();
         $this->user = $user;
     }
-    public function findByUsername(string $username): ?User
+    public function findByUsername( $username): ?User
     {
         $statement = $this->connection->prepare("SELECT * FROM user WHERE user_username = ? ");
         $statement->execute([$username]);
@@ -27,6 +27,25 @@ class UserRepository
                 $this->user->setUsername($row['user_username']);
                 $this->user->setPassword($row['user_password']);
 
+                return $this->user;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
+        }
+    }
+
+    public function findById( $id): ?User
+    {
+        $statement = $this->connection->prepare("SELECT * FROM user WHERE user_ID = ? ");
+        $statement->execute([$id]);
+
+        try {
+            if ($row = $statement->fetch()) {
+                $this->user->setId($row['user_ID']);
+                $this->user->setUsername($row['user_username']);
+                $this->user->setPassword($row['user_password']);
                 return $this->user;
             } else {
                 return null;

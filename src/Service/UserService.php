@@ -32,23 +32,18 @@ class UserService
         $this->userRepository = $userRepository;
     }
 
+
     /**
-     * @throws LoginException
+     * @param UserLoginRequest $request
+     * @return bool
      */
     public function login(UserLoginRequest $request)
     {
 
-        $user = $this->userRepository->findByUsername($request->getUsername());
-        if ($user == null) {
-            throw new LoginException("Invalid Username or Password");
+        $existUser = $this->userRepository->findByUsername($request->getUsername());
+        if($existUser && password_verify($request->getPassword(),$existUser->getPassword())){
+            return true;
         }
-
-        if (password_verify($request->getPassword(), $user->getPassword())) {
-            $response = new UserLoginResponse();
-            $response->setUser($user);
-            return $response;
-        } else {
-            throw new LoginException("Invalid Username or Password");
-        }
+        return false;
     }
 }
