@@ -30,18 +30,19 @@ class SessionRepository
     {
         $this->connection = $connection;
     }
-    public function save(Session $session)
+    public function save(Session $session): bool|Session
     {
-        $statement = $this->connection->prepare("INSERT INTO sessions (sess_id, user_ID, sess_lifetime) VALUES(?, ?, ?)");
-        $insertSuccess = $statement->execute([
-            $session->getSessID(),
-            $session->getUserID(),
-            $session->getSessLifetime()
-        ]);
-        if (!$insertSuccess) {
+        try{
+            $statement = $this->connection->prepare("INSERT INTO sessions (sess_id, user_ID, sess_lifetime) VALUES(?, ?, ?)");
+            $insertSuccess = $statement->execute([
+                $session->getSessID(),
+                $session->getUserID(),
+                $session->getSessLifetime()
+            ]);
+            return $session;
+        }catch (\Exception){
             return false;
         }
-        return $session;
     }
 
     public function deleteById($sessionID): bool

@@ -13,9 +13,10 @@ ini_set('display_errors', '1');
 
 $conn = DatabaseConnect::getConnection();
 
-include_once '../src/Route/routes.php';
+
 
 $app = new Application(dirname(__DIR__));
+include_once '../src/Route/routes.php';
 $app->run();
 
 

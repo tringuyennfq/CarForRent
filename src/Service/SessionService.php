@@ -2,6 +2,7 @@
 
 namespace Tringuyen\CarForRent\Service;
 
+use http\Cookie;
 use Tringuyen\CarForRent\Model\Session;
 use Tringuyen\CarForRent\Repository\SessionRepository;
 use Tringuyen\CarForRent\Repository\UserRepository;
@@ -9,14 +10,20 @@ use Tringuyen\CarForRent\Repository\UserRepository;
 class SessionService
 {
     public string $userId;
+    private CookieService $cookieService;
     protected SessionRepository $sessionRepository;
     private UserRepository $userRepository;
 
-    public function __construct(SessionRepository $sessionRepository, UserRepository $userRepository)
+    public function __construct(
+        SessionRepository $sessionRepository,
+        UserRepository $userRepository,
+        CookieService $cookieService
+    )
     {
-        $this->userId = '';
+        $this->userId = 'user_ID';
         $this->sessionRepository = $sessionRepository;
         $this->userRepository = $userRepository;
+        $this->cookieService = $cookieService;
     }
 
     public function getUserId(): ?int
@@ -38,12 +45,10 @@ class SessionService
         $session->setSessLifetime($lifetime);
 
         $sessionSaved = $this->sessionRepository->save($session);
-        if (getType($sessionSaved) == 'boolean' && !$sessionSaved) {
+        if (!$sessionSaved) {
             return false;
         }
-        setcookie($this->userId, $session->getSessID(), $lifetime, '/');
-        $_SESSION[$this->userId] = $userId;
-        return true;
+        return $this->cookieService->set($this->userId, $session->getSessID(), $lifetime, '/');
     }
 
     public function destroyUser(): bool
@@ -53,7 +58,7 @@ class SessionService
         if (!$checkDeleteSession) {
             return false;
         }
-        setcookie($this->userId, '', 1, '/');
+        $this->cookieService->set($this->userId, '', 1, '/');
         unset($_SESSION[$this->userId]);
         return true;
     }

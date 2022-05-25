@@ -86,7 +86,6 @@ class UserServiceTest extends TestCase
     /**
      * @param array $params
      * @return void
-     * @throws LoginException
      * @test
      * @dataProvider loginFailedDataProvider
      */

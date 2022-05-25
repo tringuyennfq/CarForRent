@@ -5,7 +5,7 @@ namespace Tringuyen\CarForRent\Bootstrap;
 class View
 {
 
-    public static function renderView(string $view, $params = [])
+    public static function renderView(string $view, $params = []): array|bool|string
     {
         $layoutContent = self::layoutContent();
         $viewContent = self::viewContent($view, $params);

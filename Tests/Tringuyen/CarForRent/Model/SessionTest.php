@@ -19,6 +19,9 @@ class SessionTest extends TestCase
         $this->assertEquals(1,$result);
     }
 
+    /**
+     * @return void
+     */
     public function testGetUserID()
     {
         $sessionTest = new Session();
@@ -27,6 +30,9 @@ class SessionTest extends TestCase
         $this->assertEquals(212,$result);
     }
 
+    /**
+     * @return void
+     */
     public function testGetSessLifetime()
     {
         $sessionTest = new Session();
