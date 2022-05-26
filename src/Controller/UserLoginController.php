@@ -17,15 +17,16 @@ class UserLoginController
     private UserLoginRequest $userLoginRequest;
     private UserLoginResponse $userLoginResponse;
     private LoginValidator $userLoginValidator;
+    private SessionService $sessionService;
 
 
-    public function __construct(UserService $userService, UserLoginRequest $request, UserLoginResponse $response,LoginValidator $userLoginValidator)
+    public function __construct(UserService $userService, UserLoginRequest $request, UserLoginResponse $response, LoginValidator $userLoginValidator, SessionService $sessionService)
     {
         $this->userService = $userService;
         $this->userLoginRequest = $request;
         $this->userLoginResponse = $response;
         $this->userLoginValidator = $userLoginValidator;
-
+        $this->sessionService = $sessionService;
     }
 
     public function login()
@@ -36,9 +37,10 @@ class UserLoginController
                 $this->userLoginRequest->fromArray($this->userLoginRequest->getBody());
                 $this->userLoginValidator->validateUserLogin($this->userLoginRequest);
                 $isLoginSuccess = $this->userService->login($this->userLoginRequest);
-                if($isLoginSuccess){
-                    $_SESSION['username'] = $this->userLoginRequest->getUsername();
-                    View::redirect('/');
+                if ($isLoginSuccess != null) {
+                    $this->userLoginResponse = $isLoginSuccess;
+                    $this->sessionService->setUserId($isLoginSuccess->getUser()->getId());
+                    return View::redirect('/');
                 }
                 $errors = 'Username or Password is invalid!';
             }
@@ -55,9 +57,11 @@ class UserLoginController
         ]);
     }
 
-    public function logout()
-    {
-        unset($_SESSION['username']);
-        View::redirect('/');
+    public function logout()    {
+        $isLogout = $this->sessionService->destroyUser();
+        if ($isLogout) {
+            return View::redirect('/login');
+        }
+        return View::redirect('/');
     }
 }

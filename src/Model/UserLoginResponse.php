@@ -6,6 +6,9 @@ use Tringuyen\CarForRent\Bootstrap\Response;
 
 class UserLoginResponse extends Response
 {
+    /**
+     * @var User
+     */
     protected User $user;
 
     public function __construct()

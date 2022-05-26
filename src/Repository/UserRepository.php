@@ -8,7 +8,13 @@ use Tringuyen\CarForRent\Model\User;
 
 class UserRepository
 {
+    /**
+     * @var PDO
+     */
     private PDO $connection;
+    /**
+     * @var User
+     */
     private User $user;
 
     public function __construct(User $user)
@@ -16,7 +22,12 @@ class UserRepository
         $this->connection = DatabaseConnect::getConnection();
         $this->user = $user;
     }
-    public function findByUsername( $username): ?User
+
+    /**
+     * @param $username
+     * @return User|null
+     */
+    public function findByUsername($username): ?User
     {
         $statement = $this->connection->prepare("SELECT * FROM user WHERE user_username = ? ");
         $statement->execute([$username]);
@@ -36,7 +47,11 @@ class UserRepository
         }
     }
 
-    public function findById( $id): ?User
+    /**
+     * @param $id
+     * @return User|null
+     */
+    public function findById($id): ?User
     {
         $statement = $this->connection->prepare("SELECT * FROM user WHERE user_ID = ? ");
         $statement->execute([$id]);

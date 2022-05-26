@@ -47,13 +47,10 @@ class UserServiceTest extends TestCase
     }
 
     /**
-     * @param array $params
-     * @param UserLoginResponse $expected
-     * @return void
      * @test
      * @dataProvider loginSuccessfulDataProvider
      */
-    public function testLoginSuccessful(array $params,bool $expected): void
+    public function testLoginSuccessful(array $params,UserLoginResponse $expected): void
     {
         $userRepositoryMock = $this->getMockBuilder(UserRepository::class)->disableOriginalConstructor()->getMock();
         $userRepositoryMock->expects($this->once())->method("findByUsername")->willReturn($params['user']);
@@ -71,6 +68,8 @@ class UserServiceTest extends TestCase
      */
     #[ArrayShape(['happy-case-1' => "array"])] public function loginSuccessfulDataProvider()
     {
+        $userLoginResponse = new UserLoginResponse();
+        $userLoginResponse->setUser($this->getUser(1,"khaitri","$2y$10$0BxlcWJVCq0Nrlfh.IFcF.tvgMSrIzSPcPQmcr8Qr7dpbVzqng6ny"));
         return [
             'happy-case-1' => [
                 'params' => [
@@ -78,7 +77,7 @@ class UserServiceTest extends TestCase
                     'username'=>'khaitri',
                     'password'=>'123456'
                 ],
-                'expected' =>  true
+                'expected' =>  $userLoginResponse
             ]
         ];
     }
@@ -89,7 +88,7 @@ class UserServiceTest extends TestCase
      * @test
      * @dataProvider loginFailedDataProvider
      */
-    public function testLoginFailed(array $params, bool $expected): void
+    public function testLoginFailed(array $params,$expected): void
     {
         $userRepositoryMock = $this->getMockBuilder(UserRepository::class)->disableOriginalConstructor()->getMock();
         $userRepositoryMock->expects($this->once())->method("findByUsername")->willReturn(null);
@@ -110,7 +109,7 @@ class UserServiceTest extends TestCase
                     'username'=>'khaitri',
                     'password'=>'123456'
                 ],
-                'expected'=>false
+                'expected'=>null
             ]
         ];
     }

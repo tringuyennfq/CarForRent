@@ -23,12 +23,12 @@ class SessionRepositoryTest extends TestCase
     /**
      * @return void
      */
-    public function testFindByIdSuccess()
+    public function testFindByIdSuccess(): void
     {
         $session = new Session();
         $sessionRepository = new SessionRepository();
         $session->setSessID(uniqid());
-        $session->setUserID("1");
+        $session->setUserID(1);
         $session->setSessLifetime(time() + (60 * 60 * 24));
         $sessionRepository->save($session);
 
@@ -57,7 +57,7 @@ class SessionRepositoryTest extends TestCase
     public function testSaveFailed()
     {
         $session = new Session();
-        $session->setUserID('');
+        $session->setUserID(0);
         $session->setSessID('');
         $sessionRepository = new SessionRepository();
         $actual = $sessionRepository->save($session);

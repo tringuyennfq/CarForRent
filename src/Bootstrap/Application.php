@@ -3,6 +3,7 @@
 namespace Tringuyen\CarForRent\Bootstrap;
 
 use phpDocumentor\Reflection\Types\This;
+use ReflectionException;
 
 class Application
 {
@@ -27,7 +28,7 @@ class Application
      */
     public static Application $app;
 
-    public function __construct($rootPath)
+    public function __construct(string $rootPath)
     {
         self::$ROOT_DIR = $rootPath;
         self::$app = $this;
@@ -36,16 +37,23 @@ class Application
         $this->router = new Router();
     }
 
-    public function run()
+    /**
+     * @throws ReflectionException
+     */
+    public function run(): void
     {
         echo $this->resolve();
     }
-    public function resolve(): bool|array|string
+
+    /**
+     * @throws ReflectionException
+     */
+    public function resolve(): array | string
     {
         $container = new Container();
         $path = $this->request->getPath();
         $method = $this->request->getMethod();
-        $callback = Router::$routes[$method][$path]?? false;
+        $callback = Router::$routes[$method][$path] ?? false;
         if ($callback === false) {
             $this->response->setStatusCode(404);
             return View::renderView('404');

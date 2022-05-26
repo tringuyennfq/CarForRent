@@ -5,30 +5,48 @@ namespace Tringuyen\CarForRent\Bootstrap;
 class View
 {
 
-    public static function renderView(string $view, $params = []): array|bool|string
+    /**
+     * @param string $view
+     * @param $params
+     * @return array|string
+     */
+    public static function renderView(string $view, $params = []): array | string
     {
         $layoutContent = self::layoutContent();
         $viewContent = self::viewContent($view, $params);
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
-    protected static function layoutContent()
+    /**
+     * @return false|string
+     */
+    protected static function layoutContent(): bool | string
     {
         ob_start();
-        include_once Application::$ROOT_DIR . "/src/View/layouts/main.php";
+        include_once __DIR__ . "/../View/layouts/main.php";
         return ob_get_clean();
     }
 
-    protected static function viewContent($view, $params)
+    /**
+     * @param $view
+     * @param $params
+     * @return bool|string
+     */
+    protected static function viewContent($view, $params): bool | string
     {
         foreach ($params as $key => $value) {
             $$key = $value;
         }
         ob_start();
-        include_once Application::$ROOT_DIR . "/src/View/$view.php";
+        include_once __DIR__ . "/../View/$view.php";
         return ob_get_clean();
     }
-    public static function redirect($url)
+
+    /**
+     * @param $url
+     * @return void
+     */
+    public static function redirect($url): void
     {
         header("Location: $url");
     }

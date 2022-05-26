@@ -9,7 +9,7 @@ use PDOException;
 class DatabaseConnect
 {
     private static $conn;
-    private static $dotenv;
+    private static Dotenv $dotenv;
     public static function getConnection(): PDO
     {
         if (!self::$conn) {

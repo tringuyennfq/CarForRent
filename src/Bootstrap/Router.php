@@ -21,6 +21,4 @@ class Router
     {
         self::$routes['POST'][$path] = $callback;
     }
-
-
 }

@@ -2,7 +2,6 @@
 
 namespace Tringuyen\CarForRent\Service;
 
-use Tringuyen\CarForRent\Exception\LoginException;
 use Tringuyen\CarForRent\Model\UserLoginRequest;
 use Tringuyen\CarForRent\Model\UserLoginResponse;
 use Tringuyen\CarForRent\Repository\UserRepository;
@@ -35,15 +34,17 @@ class UserService
 
     /**
      * @param UserLoginRequest $request
-     * @return bool
+     * @return UserLoginResponse|null
      */
-    public function login(UserLoginRequest $request)
+    public function login(UserLoginRequest $request): ?UserLoginResponse
     {
 
         $existUser = $this->userRepository->findByUsername($request->getUsername());
-        if($existUser && password_verify($request->getPassword(),$existUser->getPassword())){
-            return true;
+        if ($existUser && password_verify($request->getPassword(), $existUser->getPassword())) {
+            $userLoginResponse = new UserLoginResponse();
+            $userLoginResponse->setUser($existUser);
+            return $userLoginResponse;
         }
-        return false;
+        return null;
     }
 }

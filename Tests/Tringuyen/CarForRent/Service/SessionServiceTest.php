@@ -53,6 +53,7 @@ class SessionServiceTest extends TestCase
         $sessionRepositoryMock = $this->getMockBuilder(SessionRepository::class)->disableOriginalConstructor()->getMock();
         $sessionRepositoryMock->expects($this->once())->method('save')->willReturn($session);
         $userRepositoryMock = $this->getMockBuilder(UserRepository::class)->disableOriginalConstructor()->getMock();
+        $userRepositoryMock->expects($this->once())->method('findById')->willReturn($this->getUser(1,'khaitri','123456'));
         $cookieService = new CookieService();
         $sessionService = new SessionService($sessionRepositoryMock, $userRepositoryMock,$cookieService);
         $resultSet = $sessionService->setUserId(1);

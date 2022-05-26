@@ -6,37 +6,43 @@ use Tringuyen\CarForRent\Bootstrap\Request;
 
 class UserLoginRequest extends Request
 {
-    protected $username;
-    protected $password;
+    /**
+     * @var string
+     */
+    protected string $username;
+    /**
+     * @var string
+     */
+    protected string $password;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUsername(): mixed
+    public function getUsername(): string
     {
         return $this->username;
     }
 
     /**
-     * @param mixed $username
+     * @param string $username
      */
-    public function setUsername(mixed $username): void
+    public function setUsername(string $username): void
     {
         $this->username = $username;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getPassword(): mixed
+    public function getPassword(): string
     {
         return $this->password;
     }
 
     /**
-     * @param mixed $password
+     * @param string $password
      */
-    public function setPassword($password): void
+    public function setPassword(string $password): void
     {
         $this->password = $password;
     }
@@ -48,6 +54,10 @@ class UserLoginRequest extends Request
         $this->password = '';
     }
 
+    /**
+     * @param array $params
+     * @return $this
+     */
     public function fromArray(array $params): static
     {
         $this->username = $params['username'] ?? '';

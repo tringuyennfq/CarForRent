@@ -2,6 +2,7 @@
 
 namespace Tringuyen\CarForRent\Repository;
 
+use Exception;
 use PDO;
 use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Model\Session;
@@ -30,9 +31,14 @@ class SessionRepository
     {
         $this->connection = $connection;
     }
-    public function save(Session $session): bool|Session
+
+    /**
+     * @param Session $session
+     * @return bool|Session
+     */
+    public function save(Session $session): bool | Session
     {
-        try{
+        try {
             $statement = $this->connection->prepare("INSERT INTO sessions (sess_id, user_ID, sess_lifetime) VALUES(?, ?, ?)");
             $insertSuccess = $statement->execute([
                 $session->getSessID(),
@@ -40,17 +46,25 @@ class SessionRepository
                 $session->getSessLifetime()
             ]);
             return $session;
-        }catch (\Exception){
+        } catch (Exception) {
             return false;
         }
     }
 
+    /**
+     * @param $sessionID
+     * @return bool
+     */
     public function deleteById($sessionID): bool
     {
         $statement = $this->connection->prepare("DELETE FROM sessions WHERE sess_id = '$sessionID' ");
         return $statement->execute();
     }
 
+    /**
+     * @param $sessionID
+     * @return Session
+     */
     public function findById($sessionID): Session
     {
         $statement = $this->connection->prepare("SELECT * FROM sessions WHERE sess_id = '$sessionID' ");

@@ -19,7 +19,7 @@
 
                 <li id="btn-wrapper">
                 <?php
-                if (isset($_SESSION['username'])) {
+                if (isset($_SESSION['user_ID'])) {
                     echo '<p id="hello">Hello ' . $_SESSION['username'] . '</p>';
                     echo '<form action="/logout" method="post">';
                     echo '<button type="submit" class="btn btn-primary home-btn" id="btn-logout"">Logout</button>';
@@ -34,7 +34,7 @@
     </div>
 </nav>
 
-<h1><?= $name . "'s"; ?> Homepage</h1>
+<h1><?= "Tri Nguyen's"; ?> Homepage</h1>
 
 <div class="album py-5 bg-light">
     <div class="container">
