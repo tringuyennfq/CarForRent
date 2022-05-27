@@ -4,7 +4,6 @@ namespace Test\Tringuyen\CarForRent\Model;
 
 
 use PHPUnit\Framework\TestCase;
-use Tringuyen\CarForRent\Bootstrap\Request;
 use Tringuyen\CarForRent\Model\UserLoginRequest;
 
 class UserLoginRequestTest extends TestCase

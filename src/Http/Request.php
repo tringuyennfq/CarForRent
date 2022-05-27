@@ -1,6 +1,6 @@
 <?php
 
-namespace Tringuyen\CarForRent\Bootstrap;
+namespace Tringuyen\CarForRent\Http;
 
 class Request
 {
@@ -35,5 +35,13 @@ class Request
             $body[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
         }
         return $body;
+    }
+    public function getJSONBody()
+    {
+        $body = file_get_contents('php://input');
+        if ($this->getMethod() == 'POST') {
+            $data = json_decode($body,true);
+        }
+        return $data;
     }
 }

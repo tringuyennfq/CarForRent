@@ -2,7 +2,7 @@
 
 namespace Tringuyen\CarForRent\Model;
 
-use Tringuyen\CarForRent\Bootstrap\Request;
+use Tringuyen\CarForRent\Http\Request;
 
 class UserLoginRequest extends Request
 {

@@ -2,8 +2,9 @@
 
 namespace Tringuyen\CarForRent\Bootstrap;
 
-use phpDocumentor\Reflection\Types\This;
 use ReflectionException;
+use Tringuyen\CarForRent\Http\Request;
+use Tringuyen\CarForRent\Http\Response;
 
 class Application
 {
@@ -40,15 +41,15 @@ class Application
     /**
      * @throws ReflectionException
      */
-    public function run(): void
+    public function run()
     {
-        echo $this->resolve();
+         echo $this->resolve();
     }
 
     /**
      * @throws ReflectionException
      */
-    public function resolve(): array | string
+    public function resolve()
     {
         $container = new Container();
         $path = $this->request->getPath();

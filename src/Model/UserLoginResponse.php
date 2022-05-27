@@ -2,7 +2,7 @@
 
 namespace Tringuyen\CarForRent\Model;
 
-use Tringuyen\CarForRent\Bootstrap\Response;
+use Tringuyen\CarForRent\Http\Response;
 
 class UserLoginResponse extends Response
 {
