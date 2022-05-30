@@ -3,6 +3,7 @@
 namespace Tringuyen\CarForRent\Controller;
 
 use Tringuyen\CarForRent\Bootstrap\View;
+use Tringuyen\CarForRent\Repository\CarRepository;
 
 class SiteController
 {
@@ -11,8 +12,11 @@ class SiteController
      */
     public function home(): array | string
     {
+        $carRepository = new CarRepository();
+        $carList = $carRepository->findAll(10,0);
         $params = [
-            'name' => "Tri Nguyen"
+            'name' => "Tri Nguyen",
+            'carList' => $carList
         ];
         return View::renderView('home', $params);
     }

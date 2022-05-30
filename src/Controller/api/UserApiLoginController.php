@@ -2,10 +2,10 @@
 
 namespace Tringuyen\CarForRent\Controller\api;
 
-use Tringuyen\CarForRent\Bootstrap\View;
 use Tringuyen\CarForRent\Http\Response;
 use Tringuyen\CarForRent\Model\UserLoginRequest;
 use Tringuyen\CarForRent\Model\UserLoginResponse;
+use Tringuyen\CarForRent\Service\TokenService;
 use Tringuyen\CarForRent\Service\UserService;
 use Tringuyen\CarForRent\Tranformer\UserTranformer;
 use Tringuyen\CarForRent\Validator\LoginValidator;
@@ -16,17 +16,18 @@ class UserApiLoginController
     private UserLoginRequest $userLoginRequest;
     private UserLoginResponse $userLoginResponse;
     private LoginValidator $userLoginValidator;
-    private UserTranformer $userTranformer;
+    private UserTranformer $userTransformer;
+    private TokenService $tokenService;
 
 
-
-    public function __construct(UserService $userService, UserLoginRequest $request, UserLoginResponse $response, LoginValidator $userLoginValidator,UserTranformer $userTranformer)
+    public function __construct(UserService $userService, UserLoginRequest $request, UserLoginResponse $response, LoginValidator $userLoginValidator, UserTranformer $userTransformer, TokenService $tokenService)
     {
         $this->userService = $userService;
         $this->userLoginRequest = $request;
         $this->userLoginResponse = $response;
         $this->userLoginValidator = $userLoginValidator;
-        $this->userTranformer = $userTranformer;
+        $this->userTransformer = $userTransformer;
+        $this->tokenService = $tokenService;
 
     }
 
@@ -40,27 +41,25 @@ class UserApiLoginController
                 $isLoginSuccess = $this->userService->login($this->userLoginRequest);
                 if ($isLoginSuccess != null) {
                     $this->userLoginResponse = $isLoginSuccess;
+                    $accessToken = $this->tokenService->create($this->userLoginResponse->getUser());
                     return $this->userLoginResponse->toJson(
-                        [
-                            'data'=>$this->userTranformer->UserToArray($this->userLoginResponse->getUser()),
-                            'message'=>$errors
-                        ], Response::HTTP_OK
-                    );
+
+                        ['data' => $this->userTransformer->UserToArray($this->userLoginResponse->getUser()),
+                            'message' => $errors,
+                            'token'=> $accessToken],
+                        Response::HTTP_OK);
                 }
                 $errors = 'Username or Password is invalid!';
                 return $this->userLoginResponse->toJson(
-                    [
-                        'message'=>$errors
-                    ], Response::HTTP_UNAUTHORIZED
-                );
+                    ['message' => $errors], Response::HTTP_UNAUTHORIZED);
             }
         } catch (\Exception $exception) {
             // logging
             $errors = $exception->getMessage();
             return $this->userLoginResponse->toJson(
-                [
-                    'message'=>$errors
-                ],Response::HTTP_BAD_REQUEST);
+                ['message' => $errors], Response::HTTP_BAD_REQUEST);
         }
+        return $this->userLoginResponse->toJson(
+            ['message' => 'Error!'], Response::HTTP_FORBIDDEN);
     }
 }
