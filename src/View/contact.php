@@ -1,6 +1,3 @@
-<?php
-
-?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -16,18 +13,43 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact">Contact</a>
                 </li>
-                <li>
+
+                <li id="btn-wrapper">
                     <?php
-                    if (isset($_SESSION['username'])) {
-                        echo '<button type="button" class="btn btn-primary home-btn" id="btn-logout" onclick="location.href=\'logout\'">Logout</button>';
+                    if (isset($_SESSION['user_ID'])) {
+                        echo '<p id="hello">Hello ' . $_SESSION['username'] . '</p>';
+                        echo '<form action="/logout" method="post">';
+                        echo '<button type="submit" class="btn btn-primary home-btn" id="btn-logout"">Logout</button>';
+                        echo '</form>';
                     } else {
                         echo '<button type="button" class="btn btn-primary home-btn" id="btn-login" onclick="location.href=\'login\'">Login</button>';
                     }
                     ?>
                 </li>
-
             </ul>
         </div>
     </div>
 </nav>
-<h1>Contact me</h1>
+<div class="contact-background">
+    <div class="contact-wrapper">
+        <form id="contact" action="" method="post">
+            <h3>Quick Contact</h3>
+            <h4>Contact us today, and get reply with in 24 hours!</h4>
+            <fieldset>
+                <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Your Email Address" type="email" tabindex="2" required>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
+            </fieldset>
+            <fieldset>
+                <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+            </fieldset>
+            <fieldset>
+                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
+</div>

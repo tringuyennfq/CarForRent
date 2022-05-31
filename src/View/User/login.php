@@ -25,6 +25,7 @@
 
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <a class="d-block text-center mt-2 small" href="register">Don't have an account? Sign up</a>
         <p class="mt-5 mb-3 text-muted">&copy;Tri Nguyen 2022</p>
     </form>
 </div>

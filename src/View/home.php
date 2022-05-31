@@ -1,6 +1,3 @@
-<?php
-
-?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Navbar</a>
@@ -26,6 +23,7 @@
                     echo '</form>';
                 } else {
                     echo '<button type="button" class="btn btn-primary home-btn" id="btn-login" onclick="location.href=\'login\'">Login</button>';
+                    echo '<button type="button" class="btn btn-primary home-btn" id="btn-register" onclick="location.href=\'register\'">Register</button>';
                 }
                 ?>
                 </li>

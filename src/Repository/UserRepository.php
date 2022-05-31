@@ -69,4 +69,21 @@ class UserRepository
             $statement->closeCursor();
         }
     }
+
+    /**
+     * @param User $user
+     * @return bool
+     */
+    public function insertUser(User $user): bool
+    {
+        $statement = $this->connection->prepare("INSERT INTO user (user_username, user_password) VALUES(?, ?)");
+        $insertSuccess = $statement->execute([
+            $user->getUsername(),
+            password_hash($user->getPassword(),PASSWORD_BCRYPT)
+        ]);
+        if (!$insertSuccess) {
+            return false;
+        }
+        return true;
+    }
 }
