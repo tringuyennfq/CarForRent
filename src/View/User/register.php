@@ -19,7 +19,7 @@
                         <form action="" method="post">
 
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingInputUsername" name="username" placeholder="myusername" autofocus>
+                                <input type="text" class="form-control" id="floatingInputUsername" name="username" placeholder="myusername" value="<?=$username ?? ''?>" autofocus>
                                 <label for="floatingInputUsername">Username</label>
                                 <p style="color:red; margin-top:10px;"><?=$error['username'] ?? ''?></p>
                                 <p style="color:red; margin-top:10px;"><?=$error['exception'] ?? ''?></p>

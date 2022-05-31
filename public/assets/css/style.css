@@ -9,9 +9,18 @@ html,
 body {
     height: 100%;
 }
-
-.login-wrapper {
+.login-background{
     height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(#b6c4fa, #5978ff);
+}
+.login-wrapper {
+    height: 600px;
+    width: 800px;
+    border-radius: 5px;
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
@@ -230,12 +239,16 @@ fieldset {
 .register-background{
     width: 100%;
     height: 100%;
-    padding: 100px 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(#b6c4fa, #5978ff);
 }
 .register-wrapper{
-    width: 100%;
+    width: 98%;
     height: 100%;
+    padding: 200px 100px;
 }
 #alert-wrapper{
     display: flex;

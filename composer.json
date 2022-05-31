@@ -14,7 +14,8 @@
     "require": {
       "ext-pdo": "*",
         "vlucas/phpdotenv": "^5.4",
-        "firebase/php-jwt": "^6.2"
+        "firebase/php-jwt": "^6.2",
+        "aws/aws-sdk-php": "^3.224"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "3.*",

@@ -15,7 +15,7 @@ class RegisterValidator extends Validator
     public function validateUserRegister(UserRegisterRequest $userRegisterRequest): bool|array
     {
         $val = new Validator();
-        $val->name('username')->value($userRegisterRequest->getUsername())->required();
+        $val->name('username')->value($userRegisterRequest->getUsername())->required()->max(50);
         $val->name('password')->value($userRegisterRequest->getPassword())->customPattern('[A-Za-z0-9-.;_!#@]{5,15}')->required();
 
         $val->name('confirmPassword')->value($userRegisterRequest->getConfirmPassword())->equal($userRegisterRequest->getPassword())->required();
