@@ -6,6 +6,7 @@ use Tringuyen\CarForRent\Database\DatabaseConnect;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+
 session_start();
 
 error_reporting(E_ALL);

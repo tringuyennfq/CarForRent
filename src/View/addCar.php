@@ -54,7 +54,7 @@
 
 
                 <div class="form-group">
-                    <label for="exampleFormControlFile1">Image: </label>
+                    <label for="exampleFormControlFile1">Image:  </label>
                     <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
                     <p style="color:red; height: 15px;"><?=$error['image'] ?? ' '?></p>
                 </div>

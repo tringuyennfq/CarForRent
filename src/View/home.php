@@ -59,7 +59,7 @@
                                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                                     </div>
-                                    <strong class="text"><?php echo $car->getPrice()." $";?></strong>
+                                    <strong class="text" style="font-size: 23px;"><?php echo $car->getPrice()." $";?></strong>
                                 </div>
                             </div>
                         </div>

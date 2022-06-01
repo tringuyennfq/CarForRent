@@ -35,7 +35,7 @@ class AddCarController
             if($this->carRequest->getMethod() === 'POST'){
                 $requestBody = $this->carRequest->getBody();
                 $this->carRequest->fromArray($requestBody);
-                $this->carValidator->validateImageUpload($_FILES['image']);
+                $this->carValidator->validateImageUpload($_FILES['image'],2);
                 $validate = $this->carValidator->validateCarAdd($this->carRequest);
                 if($validate === true){
                     $uploadImage = $this->fileUploadService->uploadImage($_FILES['image']);

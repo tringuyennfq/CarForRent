@@ -21,7 +21,7 @@ class AddCarValidator
         return $val->getErrors();
     }
 
-    public function validateImageUpload($file)
+    public function validateImageUpload($file,int $maxfilesizeMB)
     {
         if (!isset($file) || $file["error"] != 0) {
             throw new UploadFileException('File upload does not exist');
@@ -40,7 +40,7 @@ class AddCarValidator
         if (!array_key_exists($ext, $allowed)) {
             throw new UploadFileException("Error: Please select a valid file format.");
         }
-        $maxsize = 10 * 1024 * 1024;
+        $maxsize = $maxfilesizeMB * 1024 * 1024;
         if ($filesize > $maxsize) {
             throw new UploadFileException("Error: File size is larger than the allowed limit.");
         }
