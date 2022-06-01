@@ -177,6 +177,13 @@ class Validator
         return $this;
 
     }
+    public function is_numeric()
+    {
+        if(!is_numeric($this->value)){
+            $this->errors[$this->name] = $this->name.' doesn\'t match type';
+        }
+        return $this;
+    }
 
     /**
      * Confronta con il valore di
@@ -296,9 +303,16 @@ class Validator
      * @param mixed $value
      * @return boolean
      */
-    public static function is_int($value){
-        if(filter_var($value, FILTER_VALIDATE_INT)) return true;
+    public function is_int($value){
+        if(filter_var($value, FILTER_VALIDATE_INT)){
+            return true;
+        }
+        $this->errors[$this->name] = $this->name." wrong format!";
+        return $this;
+
     }
+
+
 
     /**
      * Verifica se il valore è

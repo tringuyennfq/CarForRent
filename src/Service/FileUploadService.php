@@ -4,56 +4,35 @@ namespace Tringuyen\CarForRent\Service;
 
 use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
+use Dotenv\Dotenv;
+use Tringuyen\CarForRent\Bootstrap\Application;
 use Tringuyen\CarForRent\Exception\UploadFileException;
 
 class FileUploadService
 {
+    private static Dotenv $dotenv;
     /**
      * @param $file
      * @return mixed|null
      * @throws UploadFileException
      */
-    public function upload($file): ?string
+    public function uploadImage($file): ?string
     {
-        $bucketName = getenv('S3_BUCKET_NAME');
-        $bucketRegion = getenv('S3_BUCKET_REGION');
+        static::$dotenv = Dotenv::createImmutable(__DIR__.'/../');
+        static::$dotenv->load();
+        $bucketName = $_ENV['S3_BUCKET_NAME'];
+        $bucketRegion = $_ENV['S3_BUCKET_REGION'];
 
         $s3Client = new S3Client([
             'version' => 'latest',
             'region' => $bucketRegion,
-            'credentials' => ['key' => getenv('S3_ACCESS_KEY_ID'), 'secret' => getenv('S3_SECRET_ACCESS_KEY')]
+            'credentials' => ['key' => $_ENV['S3_KEY_ID'], 'secret' => $_ENV['S3_KEY_SECRET']]
         ]);
         if ($_SERVER["REQUEST_METHOD"] == "GET") {
             throw new UploadFileException('Invalid request method');
         }
-        if (!isset($file) || $file["error"] != 0) {
-            throw new UploadFileException('File upload does not exist');
-        }
-        $allowed = array(
-            "jpg" => "image/jpg",
-            "jpeg" => "image/jpeg",
-            "gif" => "image/gif",
-            "png" => "image/png"
-        );
-        $path = __DIR__ . "/../../public/assets/car_img/";
+        $path = Application::$ROOT_DIR."/public/assets/car_img/";
         $filename = md5(date('Y-m-d H:i:s:u')) . $file["name"];
-        $filetype = $file["type"];
-        $filesize = $file["size"];
-        $ext = pathinfo($filename, PATHINFO_EXTENSION);
-        if (!array_key_exists($ext, $allowed)) {
-            throw new UploadFileException("Error: Please select a valid file format.");
-        }
-        $maxsize = 10 * 1024 * 1024;
-
-        if ($filesize > $maxsize) {
-            throw new UploadFileException("Error: File size is larger than the allowed limit.");
-        }
-        // Validate type of the file
-        if (!in_array($filetype, $allowed)) {
-            throw new UploadFileException("Error: Please select a valid file format.");
-        }
-
-
         if (move_uploaded_file($file["tmp_name"], $path . $filename)) {
             $file_Path = $path . $filename;
             $key = basename($file_Path);

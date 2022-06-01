@@ -3,9 +3,11 @@
 namespace Tringuyen\CarForRent\Repository;
 
 use PDO;
-use Tringuyen\CarForRent\Bootstrap\Application;
+use Exception;
 use Tringuyen\CarForRent\Database\DatabaseConnect;
+use Tringuyen\CarForRent\Model\AddCarResponse;
 use Tringuyen\CarForRent\Model\Car;
+
 
 
 class CarRepository
@@ -30,6 +32,7 @@ class CarRepository
                 $car->setBrand($row['brand']);
                 $car->setColor($row['color']);
                 $car->setPrice($row['price']);
+                $car->setDescription($row['description']);
                 return $car;
             } else {
                 return null;
@@ -54,10 +57,29 @@ class CarRepository
             $car->setBrand($result['brand']);
             $car->setColor($result['color']);
             $car->setPrice($result['price']);
+            $car->setDescription($result['description']);
             $car->setImagePath($result['img']);
             array_push($carList,$car);
         }
         return $carList;
+    }
+
+    public function insertCar(AddCarResponse $carResponse)
+    {
+        $statement = $this->connection->prepare("INSERT INTO car (name, brand, price, color, img, description) VALUES (?,?,?,?,?,?)");
+        try{
+            $statement->execute([
+                $carResponse->getName(),
+                $carResponse->getBrand(),
+                $carResponse->getPrice(),
+                $carResponse->getColor(),
+                $carResponse->getImage(),
+                $carResponse->getDescription()
+            ]);
+        }catch (Exception $exception){
+            return false;
+        }
+        return true;
     }
 
 

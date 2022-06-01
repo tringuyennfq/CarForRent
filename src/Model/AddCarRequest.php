@@ -2,30 +2,23 @@
 
 namespace Tringuyen\CarForRent\Model;
 
-class Car
+use Tringuyen\CarForRent\Http\Request;
+
+class AddCarRequest extends Request
 {
-    private int $id;
     private string $name;
     private string $brand;
-    private int $price;
+    private int|string $price;
     private string $color;
     private string $description;
-    private string $imagePath;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function fromArray(array $body)
     {
-        return $this->id;
-    }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
+        $this->setName($body['name']);
+        $this->setBrand($body['brand']);
+        $this->setPrice($body['price']);
+        $this->setColor($body['color']);
+        $this->setDescription($body['description']);
     }
 
     /**
@@ -60,18 +53,13 @@ class Car
         $this->brand = $brand;
     }
 
-    /**
-     * @return int
-     */
-    public function getPrice(): int
+
+    public function getPrice()
     {
         return $this->price;
     }
 
-    /**
-     * @param int $price
-     */
-    public function setPrice(int $price): void
+    public function setPrice(int|string $price): void
     {
         $this->price = $price;
     }
@@ -95,22 +83,6 @@ class Car
     /**
      * @return string
      */
-    public function getImagePath(): string
-    {
-        return $this->imagePath;
-    }
-
-    /**
-     * @param string $image
-     */
-    public function setImagePath(string $image): void
-    {
-        $this->imagePath = $image;
-    }
-
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
@@ -123,5 +95,4 @@ class Car
     {
         $this->description = $description;
     }
-
 }

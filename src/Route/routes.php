@@ -1,6 +1,7 @@
 <?php
 
 use Tringuyen\CarForRent\Bootstrap\Router;
+use Tringuyen\CarForRent\Controller\AddCarController;
 use Tringuyen\CarForRent\Controller\api\UserApiLoginController;
 use Tringuyen\CarForRent\Controller\SiteController;
 use Tringuyen\CarForRent\Controller\UserLoginController;
@@ -14,5 +15,7 @@ Router::post('/login', [UserLoginController::class, 'login']);
 Router::post('/logout', [UserLoginController::class, 'logout']);
 Router::get('/register', [UserRegisterController::class, 'register']);
 Router::post('/register', [UserRegisterController::class, 'register']);
+Router::get('/addcar', [AddCarController::class,'addCar']);
+Router::post('/addcar', [AddCarController::class,'addCar']);
 
 Router::post('/api/login', [UserApiLoginController::class, 'login']);

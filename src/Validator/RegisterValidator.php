@@ -2,9 +2,9 @@
 
 namespace Tringuyen\CarForRent\Validator;
 
-use Tringuyen\CarForRent\Exception\ValidationException;
+
 use Tringuyen\CarForRent\Model\UserRegisterRequest;
-use function PHPUnit\Framework\throwException;
+
 
 class RegisterValidator extends Validator
 {

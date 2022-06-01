@@ -2,32 +2,26 @@
 
 namespace Tringuyen\CarForRent\Model;
 
-class Car
+use Tringuyen\CarForRent\Http\Response;
+
+class AddCarResponse extends Response
 {
-    private int $id;
     private string $name;
     private string $brand;
     private int $price;
     private string $color;
     private string $description;
-    private string $imagePath;
+    private string $image;
 
-    /**
-     * @return int
-     */
-    public function getId(): int
+    public function fromArray(array $body)
     {
-        return $this->id;
+        $this->setName($body['name']);
+        $this->setBrand($body['brand']);
+        $this->setPrice($body['price']);
+        $this->setColor($body['color']);
+        $this->setDescription($body['description']);
+        $this->setImage($body['image']);
     }
-
-    /**
-     * @param int $id
-     */
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
     /**
      * @return string
      */
@@ -95,22 +89,6 @@ class Car
     /**
      * @return string
      */
-    public function getImagePath(): string
-    {
-        return $this->imagePath;
-    }
-
-    /**
-     * @param string $image
-     */
-    public function setImagePath(string $image): void
-    {
-        $this->imagePath = $image;
-    }
-
-    /**
-     * @return string
-     */
     public function getDescription(): string
     {
         return $this->description;
@@ -123,5 +101,22 @@ class Car
     {
         $this->description = $description;
     }
+
+    /**
+     * @return string
+     */
+    public function getImage(): string
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage(string $image): void
+    {
+        $this->image = $image;
+    }
+
 
 }

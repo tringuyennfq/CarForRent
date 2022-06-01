@@ -15,7 +15,7 @@
                     <div class="card-img-left d-none d-md-flex">
                     </div>
                     <div class="card-body p-4 p-sm-5">
-                        <h5 class="card-title text-center mb-5 fw-light fs-5">Register</h5>
+                        <h1 class="h3 mb-5 font-weight-normal">Register</h1>
                         <form action="" method="post">
 
                             <div class="form-floating mb-3">
