@@ -28,7 +28,6 @@ class UserApiLoginController
         $this->userLoginValidator = $userLoginValidator;
         $this->userTransformer = $userTransformer;
         $this->tokenService = $tokenService;
-
     }
 
     public function login()
@@ -43,23 +42,29 @@ class UserApiLoginController
                     $this->userLoginResponse = $isLoginSuccess;
                     $accessToken = $this->tokenService->create($this->userLoginResponse->getUser());
                     return $this->userLoginResponse->toJson(
-
                         ['data' => $this->userTransformer->UserToArray($this->userLoginResponse->getUser()),
                             'message' => $errors,
-                            'token'=> $accessToken],
-                        Response::HTTP_OK);
+                            'token' => $accessToken],
+                        Response::HTTP_OK
+                    );
                 }
                 $errors = 'Username or Password is invalid!';
                 return $this->userLoginResponse->toJson(
-                    ['message' => $errors], Response::HTTP_UNAUTHORIZED);
+                    ['message' => $errors],
+                    Response::HTTP_UNAUTHORIZED
+                );
             }
         } catch (\Exception $exception) {
             // logging
             $errors = $exception->getMessage();
             return $this->userLoginResponse->toJson(
-                ['message' => $errors], Response::HTTP_BAD_REQUEST);
+                ['message' => $errors],
+                Response::HTTP_BAD_REQUEST
+            );
         }
         return $this->userLoginResponse->toJson(
-            ['message' => 'Error!'], Response::HTTP_FORBIDDEN);
+            ['message' => 'Error!'],
+            Response::HTTP_FORBIDDEN
+        );
     }
 }

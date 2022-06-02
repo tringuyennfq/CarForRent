@@ -29,18 +29,18 @@ class AddCarController
 
     public function addCar()
     {
-        if(!isset($_SESSION['username']) || $_SESSION['username'] != 'khaitri'){
+        if (!isset($_SESSION['username']) || $_SESSION['username'] != 'khaitri') {
             return View::redirect('404');
         }
-        try{
-            $errors =[];
+        try {
+            $errors = [];
             $success = false;
-            if($this->carRequest->getMethod() === 'POST'){
+            if ($this->carRequest->getMethod() === 'POST') {
                 $requestBody = $this->carRequest->getBody();
                 $this->carRequest->fromArray($requestBody);
-                $this->carValidator->validateImageUpload($_FILES['image'],2);
+                $this->carValidator->validateImageUpload($_FILES['image'], 2);
                 $validate = $this->carValidator->validateCarAdd($this->carRequest);
-                if($validate === true){
+                if ($validate === true) {
                     $uploadImage = $this->fileUploadService->uploadImage($_FILES['image']);
                     $this->carResponse->fromArray([...$requestBody,'image' => $uploadImage]);
                     $this->carService->save($this->carResponse);
@@ -48,16 +48,15 @@ class AddCarController
                 }
                 $errors = $validate;
             }
-        }catch (UploadFileException $exception){
+        } catch (UploadFileException $exception) {
             $errors['image'] = $exception->getMessage();
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             $errors['exception'] = $exception->getMessage();
         }
-        return View::renderView('addCar',[
+        return View::renderView('addCar', [
             'title' => 'AddCar',
             'error' => $errors,
             'success' => $success
         ]);
-
     }
 }

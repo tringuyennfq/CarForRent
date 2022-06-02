@@ -1,7 +1,9 @@
 
 <div class="add-car-wrapper">
     <div id="alert-wrapper">
-        <?php if (isset($success) && $success == true) {
+        <?php
+
+        if (isset($success) && $success == true) {
             echo '<div class="alert alert-success" role="alert" id="addcar-successful">';
             echo "Car added successfully!";
             echo '</div>';

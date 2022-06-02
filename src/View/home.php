@@ -16,7 +16,8 @@
                         <a class="nav-link" href="contact">Contact</a>
                     </li>
                     <?php
-                    if(isset($_SESSION['username']) && $_SESSION['username'] == 'khaitri'){
+
+                    if (isset($_SESSION['username']) && $_SESSION['username'] == 'khaitri') {
                         echo '<li class="nav-item">';
                         echo '<a class="nav-link" href="addcar">Add car</a>';
                         echo '</li>';
@@ -65,8 +66,7 @@
 
             <div class="row">
 
-                <?php foreach ($carList as $car)
-                {
+                <?php foreach ($carList as $car) {
                     ?>
                     <div class="col-md-4 mt-5 card-wrapper">
                         <div class="card mb-4 box-shadow card">
@@ -74,9 +74,9 @@
                                  src="<?php echo $car->getImagePath();?>"
                                  alt="Card image cap">
                             <div class="card-body">
-                                <p class="card-text"><?php echo $car->getBrand()." - ".$car->getName();?></p>
+                                <p class="card-text"><?php echo $car->getBrand() . " - " . $car->getName();?></p>
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <strong class="text" style="font-size: 23px;"><?php echo $car->getPrice()." $";?></strong>
+                                    <strong class="text" style="font-size: 23px;"><?php echo $car->getPrice() . " $";?></strong>
                                     <button type="button" class="btn btn-secondary">Rent Now</button>
                                 </div>
                             </div>

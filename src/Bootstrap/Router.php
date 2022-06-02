@@ -2,7 +2,6 @@
 
 namespace Tringuyen\CarForRent\Bootstrap;
 
-use ReflectionException;
 
 class Router
 {

@@ -10,7 +10,7 @@
             <label for="username" class="sr-only">Username</label>
             <input type="text" id="username" class="form-control" name="username" placeholder="Username"
                    autofocus value="<?php $usr = $username ?? '';
-            echo $usr; ?>">
+                    echo $usr; ?>">
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
             <div class="checkbox mb-3">

@@ -8,8 +8,6 @@ use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Model\AddCarResponse;
 use Tringuyen\CarForRent\Model\Car;
 
-
-
 class CarRepository
 {
     private PDO $connection;
@@ -42,15 +40,15 @@ class CarRepository
         }
     }
 
-    public function findAll(int $limit,int $offset)
+    public function findAll(int $limit, int $offset)
     {
         $statement = $this->connection->prepare("SELECT * FROM car LIMIT :offset,:limit");
-        $statement->bindValue('offset',$offset,PDO::PARAM_INT);
-        $statement->bindValue('limit',$limit,PDO::PARAM_INT);
+        $statement->bindValue('offset', $offset, PDO::PARAM_INT);
+        $statement->bindValue('limit', $limit, PDO::PARAM_INT);
         $statement->execute();
         $carList = [];
         $row = $statement->fetchAll();
-        foreach($row as $result){
+        foreach ($row as $result) {
             $car = new Car();
             $car->setId($result['car_id']);
             $car->setName($result['name']);
@@ -59,7 +57,7 @@ class CarRepository
             $car->setPrice($result['price']);
             $car->setDescription($result['description']);
             $car->setImagePath($result['img']);
-            array_push($carList,$car);
+            array_push($carList, $car);
         }
         return $carList;
     }
@@ -67,7 +65,7 @@ class CarRepository
     public function insertCar(AddCarResponse $carResponse)
     {
         $statement = $this->connection->prepare("INSERT INTO car (name, brand, price, color, img, description) VALUES (?,?,?,?,?,?)");
-        try{
+        try {
             $statement->execute([
                 $carResponse->getName(),
                 $carResponse->getBrand(),
@@ -76,11 +74,9 @@ class CarRepository
                 $carResponse->getImage(),
                 $carResponse->getDescription()
             ]);
-        }catch (Exception $exception){
+        } catch (Exception $exception) {
             return false;
         }
         return true;
     }
-
-
 }

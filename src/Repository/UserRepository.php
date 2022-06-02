@@ -81,12 +81,11 @@ class UserRepository
         try {
             $statement->execute([
                 $user->getUsername(),
-                password_hash($user->getPassword(),PASSWORD_BCRYPT)
+                password_hash($user->getPassword(), PASSWORD_BCRYPT)
             ]);
-        }catch(Exception $exception) {
+        } catch (Exception $exception) {
             return false;
         }
         return true;
     }
-
 }

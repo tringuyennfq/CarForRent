@@ -13,7 +13,7 @@ class SiteController
     public function home(): array | string
     {
         $carRepository = new CarRepository();
-        $carList = $carRepository->findAll(10,0);
+        $carList = $carRepository->findAll(10, 0);
         $params = [
             'name' => "Tri Nguyen",
             'carList' => $carList

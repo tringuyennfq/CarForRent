@@ -29,7 +29,7 @@ class UserLoginController
 
     public function login()
     {
-        if(isset($_SESSION['username'])){
+        if (isset($_SESSION['username'])) {
             return View::redirect('404');
         }
         try {
@@ -58,7 +58,8 @@ class UserLoginController
         ]);
     }
 
-    public function logout()    {
+    public function logout()
+    {
         $isLogout = $this->sessionService->destroyUser();
         if ($isLogout) {
             return View::redirect('/login');

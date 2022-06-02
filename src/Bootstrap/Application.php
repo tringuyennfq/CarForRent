@@ -44,7 +44,6 @@ class Application
     public function run()
     {
          echo $this->resolve();
-
     }
 
     /**

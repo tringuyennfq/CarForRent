@@ -60,7 +60,7 @@ class UserService
     public function register(UserRegisterRequest $userRegisterRequest): bool
     {
         $existUser = $this->userRepository->findByUsername($userRegisterRequest->getUsername());
-        if($existUser == null){
+        if ($existUser == null) {
             $user = new User();
             $user->setUsername($userRegisterRequest->getUsername());
             $user->setPassword($userRegisterRequest->getPassword());

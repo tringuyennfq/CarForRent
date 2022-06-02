@@ -40,7 +40,7 @@ class Request
     {
         $body = file_get_contents('php://input');
         if ($this->getMethod() == 'POST') {
-            $data = json_decode($body,true);
+            $data = json_decode($body, true);
         }
         return $data;
     }

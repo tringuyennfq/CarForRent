@@ -14,7 +14,8 @@
                     <a class="nav-link" href="contact">Contact</a>
                 </li>
                 <?php
-                if(isset($_SESSION['username']) && $_SESSION['username'] == 'khaitri'){
+
+                if (isset($_SESSION['username']) && $_SESSION['username'] == 'khaitri') {
                     echo '<li class="nav-item">';
                     echo '<a class="nav-link" href="addcar">Add car</a>';
                     echo '</li>';

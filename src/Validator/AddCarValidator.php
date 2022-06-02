@@ -15,13 +15,13 @@ class AddCarValidator
         $val->name('brand')->value($addCarRequest->getBrand())->required()->max(150);
         $val->name('price')->value($addCarRequest->getPrice())->required()->is_numeric();
         $val->name('color')->value($addCarRequest->getDescription())->required()->max(100);
-        if($val->isSuccess()){
+        if ($val->isSuccess()) {
             return true;
         }
         return $val->getErrors();
     }
 
-    public function validateImageUpload($file,int $maxfilesizeMB)
+    public function validateImageUpload($file, int $maxfilesizeMB)
     {
         if (!isset($file) || $file["error"] != 0) {
             throw new UploadFileException('File upload does not exist');
@@ -32,7 +32,7 @@ class AddCarValidator
             "gif" => "image/gif",
             "png" => "image/png"
         );
-        $path = Application::$ROOT_DIR."/public/assets/car_img/";
+        $path = Application::$ROOT_DIR . "/public/assets/car_img/";
         $filename = md5(date('Y-m-d H:i:s:u')) . $file["name"];
         $filetype = $file["type"];
         $filesize = $file["size"];

@@ -26,35 +26,32 @@ class UserRegisterController
 
     public function register()
     {
-        if(isset($_SESSION['username'])){
+        if (isset($_SESSION['username'])) {
             return View::redirect('404');
         }
-            try{
-                $errors = [];
-                $success = false;
-                if ($this->userRegisterRequest->getMethod() === 'POST') {
-                    $this->userRegisterRequest->fromArray($this->userRegisterRequest->getBody());
-                    $validate = $this->userRegisterValidator->validateUserRegister($this->userRegisterRequest);
-                    if ($validate === true) {
-                        $this->userService->register($this->userRegisterRequest);
-                        $success = true;
-                    }
-                    $errors = $validate;
+        try {
+            $errors = [];
+            $success = false;
+            if ($this->userRegisterRequest->getMethod() === 'POST') {
+                $this->userRegisterRequest->fromArray($this->userRegisterRequest->getBody());
+                $validate = $this->userRegisterValidator->validateUserRegister($this->userRegisterRequest);
+                if ($validate === true) {
+                    $this->userService->register($this->userRegisterRequest);
+                    $success = true;
                 }
-            }catch (Exception $exception){
-                $errors['exception'] = $exception->getMessage();
+                $errors = $validate;
             }
+        } catch (Exception $exception) {
+            $errors['exception'] = $exception->getMessage();
+        }
             return View::renderView('User/register', [
                 'title' => 'Register',
                 'username' => $_POST['username'] ?? '',
                 'password' => $_POST['password'] ?? '',
                 'confirmPassword' => $_POST['confirmPassword'] ?? '',
                 'error' => $errors,
-                'success'=>$success
+                'success' => $success
 
             ]);
-
-
     }
-
 }

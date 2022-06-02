@@ -117,6 +117,4 @@ class AddCarResponse extends Response
     {
         $this->image = $image;
     }
-
-
 }

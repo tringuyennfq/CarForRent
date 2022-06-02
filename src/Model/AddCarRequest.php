@@ -8,7 +8,7 @@ class AddCarRequest extends Request
 {
     private string $name;
     private string $brand;
-    private int|string $price;
+    private int | string $price;
     private string $color;
     private string $description;
 
@@ -59,7 +59,7 @@ class AddCarRequest extends Request
         return $this->price;
     }
 
-    public function setPrice(int|string $price): void
+    public function setPrice(int | string $price): void
     {
         $this->price = $price;
     }

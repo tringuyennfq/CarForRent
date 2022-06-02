@@ -2,7 +2,9 @@
 <div class="register-background">
 
     <div id="alert-wrapper">
-        <?php if (isset($success) && $success == true) {
+        <?php
+
+        if (isset($success) && $success == true) {
             echo '<div class="alert alert-success" role="alert" id="register-successful">';
             echo "Your account has been created!";
             echo '</div>';

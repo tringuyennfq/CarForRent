@@ -4,8 +4,8 @@ namespace Tringuyen\CarForRent\Model;
 
 class Session
 {
-    protected  $sessID;
-    protected  $userID;
+    protected $sessID;
+    protected $userID;
     protected $sessLifetime;
 
 
