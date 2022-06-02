@@ -21,22 +21,24 @@
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingInputUsername" name="username" placeholder="myusername" value="<?=$username ?? ''?>" autofocus>
                                 <label for="floatingInputUsername">Username</label>
-                                <p style="color:red; margin-top:10px;"><?=$error['username'] ?? ''?></p>
-                                <p style="color:red; margin-top:10px;"><?=$error['exception'] ?? ''?></p>
+                                <div style="line-height: 20px;height: 20px;">
+                                    <span style="color:red;"><?=$error['username'] ?? ''?></span>
+                                    <span style="color:red;"><?=$error['exception'] ?? ''?></span>
+                                </div>
+
                             </div>
 
-                            <hr>
 
-                            <div class="form-floating mb-3">
+                            <div class="form-floating ">
                                 <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
-                                <p style="color:red; margin-top:10px;"><?=$error['password'] ?? ''?></p>
+                                <p style="color:red;height: 20px;"><?=$error['password'] ?? ''?></p>
                             </div>
 
-                            <div class="form-floating mb-3">
+                            <div class="form-floating ">
                                 <input type="password" class="form-control" id="floatingPasswordConfirm" name="confirmPassword" placeholder="Confirm Password">
                                 <label for="floatingPasswordConfirm">Confirm Password</label>
-                                <p style="color:red; margin-top:10px;"><?=$error['confirmPassword'] ?? ''?></p>
+                                <p style="color:red; height: 20px;"><?=$error['confirmPassword'] ?? ''?></p>
                             </div>
 
                             <div class="d-grid mb-2">
