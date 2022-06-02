@@ -9,6 +9,18 @@ html,
 body {
     height: 100%;
 }
+.btn-secondary,
+.btn-primary{
+    color: #fff;
+    background-color: #9a37ec;
+    border-color: #9a37ec;
+}
+.btn-primary:hover,
+.btn-secondary:hover{
+    color: #fff;
+    background-color: #c67cff;
+    border-color: #c67cff;
+}
 .main-wrapper{
     background: linear-gradient(#b6c4fa, #5978ff);
 }

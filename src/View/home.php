@@ -73,6 +73,7 @@
                                 <p class="card-text"><?php echo $car->getBrand()." - ".$car->getName();?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <strong class="text" style="font-size: 23px;"><?php echo $car->getPrice()." $";?></strong>
+                                    <button type="button" class="btn btn-secondary">Rent Now</button>
                                 </div>
                             </div>
                         </div>
