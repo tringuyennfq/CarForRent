@@ -47,7 +47,7 @@
             <div class="row align-items-center" style="justify-content: center;">
                 <div class="col-lg-7 text-center order-lg-2">
                     <div class="img-wrap-1 mb-5" style="margin-inline: auto;">
-                        <img src="https://generisonline.com/wp-content/uploads/2022/05/maxresdefault.jpg" alt="Image" class="img-fluid">
+                        <img src="https://i.imgur.com/F6Yn1Z1.png" alt="Image" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-lg-4 ml-auto order-lg-1">
