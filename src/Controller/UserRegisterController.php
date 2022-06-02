@@ -26,6 +26,9 @@ class UserRegisterController
 
     public function register()
     {
+        if(isset($_SESSION['username'])){
+            return View::redirect('404');
+        }
             try{
                 $errors = [];
                 $success = false;

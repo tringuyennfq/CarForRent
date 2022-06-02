@@ -29,6 +29,9 @@ class UserLoginController
 
     public function login()
     {
+        if(isset($_SESSION['username'])){
+            return View::redirect('404');
+        }
         try {
             $errors = '';
             if ($this->userLoginRequest->getMethod() === 'POST') {

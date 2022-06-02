@@ -3,7 +3,7 @@
     <div id="alert-wrapper">
         <?php if (isset($success) && $success == true) {
             echo '<div class="alert alert-success" role="alert" id="addcar-successful">';
-            echo "Your account has been created!";
+            echo "Car added successfully!";
             echo '</div>';
         } ?>
     </div>
