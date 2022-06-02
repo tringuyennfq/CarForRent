@@ -29,7 +29,7 @@ class AddCarController
 
     public function addCar()
     {
-        if(isset($_SESSION['username'])){
+        if(!$_SESSION['username'] && $_SESSION['username'] != 'khaitri'){
             return View::redirect('404');
         }
         try{
