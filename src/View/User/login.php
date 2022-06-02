@@ -3,8 +3,8 @@
 ?>
 <div class="login-background">
     <div class="login-wrapper">
-        <form class="form-signin" action="" method="post">
-            <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72"
+        <form class="form-signin" action="" method="post" style="min-width: 500px;">
+            <img class="mb-4" src="https://i.pinimg.com/originals/74/ab/48/74ab48240e34df5e05a398e997a42b0e.png" alt="" width="72"
                  height="72">
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
             <label for="username" class="sr-only">Username</label>
@@ -18,16 +18,19 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            <?php if (isset($error) && $error != '') {
-                echo '<div class="alert alert-danger" role="alert">';
-                echo $error;
-                echo '</div>';
-            } ?>
+            <div id="alert" style="height: 70px;">
+                <?php if (isset($error) && $error != '') {
+                    echo '<div class="alert alert-danger" role="alert">';
+                    echo $error;
+                    echo '</div>';
+                } ?>
+            </div>
 
 
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            <button class="btn btn-lg btn-secondary btn-block" type="submit">Sign in</button>
             <a class="d-block text-center mt-2 small" href="register">Don't have an account? Sign up</a>
-            <p class="mt-5 mb-3 text-muted">&copy;Tri Nguyen 2022</p>
+            <p class="mt-3 mb-3 text-muted">&copy;Tri Nguyen 2022</p>
         </form>
     </div>
 </div>

@@ -2,7 +2,7 @@
 <div class="main-wrapper">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">Car Rental</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -15,6 +15,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact">Contact</a>
                     </li>
+                    <?php
+                    if(isset($_SESSION['username']) && $_SESSION['username'] == 'khaitri'){
+                        echo '<li class="nav-item">';
+                        echo '<a class="nav-link" href="addcar">Add car</a>';
+                        echo '</li>';
+                    }
+                    ?>
 
                     <li id="btn-wrapper">
                         <?php
@@ -34,11 +41,8 @@
         </div>
     </nav>
 
-    <div class="title-box">
-        <h1 class="head-title"><?= "Tri Nguyen's"; ?> Homepage</h1>
-    </div>
 
-    <div class="site-sectio" style="background-color: whitesmoke;">
+    <div class="site-section" style="background:transparent; color: #DFF6FF;">
         <div class="container">
             <div class="row align-items-center" style="justify-content: center;">
                 <div class="col-lg-7 text-center order-lg-2">

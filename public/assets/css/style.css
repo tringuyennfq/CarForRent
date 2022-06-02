@@ -9,37 +9,60 @@ html,
 body {
     height: 100%;
 }
-.btn-secondary,
-.btn-primary{
-    color: #fff;
-    background-color: #9a37ec;
-    border-color: #9a37ec;
+.bg-light {
+    --bs-bg-opacity: 1;
+    background-color: #142850 !important;
+    color: #DFF6FF;
 }
-.btn-primary:hover,
+.btn-secondary{
+    background-color: #0C7B93;
+    border-color: #0C7B93;
+    font-size: 20px;
+}
 .btn-secondary:hover{
-    color: #fff;
-    background-color: #c67cff;
-    border-color: #c67cff;
+    background-color: #1b3469;
+    border-color: #1b3469;
+    font-size: 20px;
+}
+.card-text,
+.d-flex{
+    color: #1b1e21 !important;
+}
+.btn-primary{
+    color: #051367;
+    background-color: #DFF6FF;
+    border-color: #DFF6FF;
+}
+.btn-primary:hover
+{
+    color: #051367;
+    background-color: #DFF6FF;
+    border-color: #DFF6FF;
+    opacity: 0.8;
+}
+.nav-link,
+.navbar-brand{
+    color: #DFF6FF!important;
+}
+.nav-link:hover,
+.navbar-brand:hover{
+    color: #27496D!important;
+}
+.navbar{
+    height: 80px;
+    position: sticky !important;
+    z-index: 10;
+    top: 0;
+
 }
 .main-wrapper{
-    background: linear-gradient(#b6c4fa, #5978ff);
-}
-.title-box{
-    height: 150px;
-    width: 800px;
-    margin-inline: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: whitesmoke;
-    border-radius: 20px;
-    margin-block: 10px;
+    background: #27496D;
 }
 .content-wrapper{
     background-color: transparent !important;
 }
 .add-car-wrapper{
-    background: linear-gradient(#b6c4fa, #5978ff);
+    background: #27496D;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,7 +98,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(#b6c4fa, #5978ff);
+    background: #27496D;
 }
 .login-wrapper {
     height: 600px;
@@ -303,7 +326,7 @@ fieldset {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(#b6c4fa, #5978ff);
+    background: #27496D;
 }
 .register-wrapper{
     width: 98%;

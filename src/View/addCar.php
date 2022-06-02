@@ -60,7 +60,7 @@
                 </div>
 
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block  mt-2">Create</button>
+                <button type="submit" class="btn btn-secondary btn-block  mt-2">Create</button>
             </form>
         </div>
     </main>
