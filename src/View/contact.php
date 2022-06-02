@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Car Rental</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -13,6 +13,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="contact">Contact</a>
                 </li>
+                <?php
+                if(isset($_SESSION['username']) && $_SESSION['username'] == 'khaitri'){
+                    echo '<li class="nav-item">';
+                    echo '<a class="nav-link" href="addcar">Add car</a>';
+                    echo '</li>';
+                }
+                ?>
 
                 <li id="btn-wrapper">
                     <?php
@@ -23,6 +30,7 @@
                         echo '</form>';
                     } else {
                         echo '<button type="button" class="btn btn-primary home-btn" id="btn-login" onclick="location.href=\'login\'">Login</button>';
+                        echo '<button type="button" class="btn btn-primary home-btn" id="btn-register" onclick="location.href=\'register\'">Register</button>';
                     }
                     ?>
                 </li>
