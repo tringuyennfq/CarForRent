@@ -8,18 +8,12 @@ use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Model\AddCarResponse;
 use Tringuyen\CarForRent\Model\Car;
 
-class CarRepository
+class CarRepository extends BaseRepository
 {
-    private PDO $connection;
-
-    public function __construct()
-    {
-        $this->connection = DatabaseConnect::getConnection();
-    }
 
     public function findById(int $id): ?Car
     {
-        $statement = $this->connection->prepare("SELECT * FROM car WHERE car_id = ? ");
+        $statement = $this->getConnection()->prepare("SELECT * FROM car WHERE car_id = ? ");
         $statement->execute([$id]);
 
         try {
@@ -42,7 +36,7 @@ class CarRepository
 
     public function findAll(int $limit, int $offset)
     {
-        $statement = $this->connection->prepare("SELECT * FROM car LIMIT :offset,:limit");
+        $statement = $this->getConnection()->prepare("SELECT * FROM car LIMIT :offset,:limit");
         $statement->bindValue('offset', $offset, PDO::PARAM_INT);
         $statement->bindValue('limit', $limit, PDO::PARAM_INT);
         $statement->execute();
@@ -64,7 +58,7 @@ class CarRepository
 
     public function insertCar(AddCarResponse $carResponse)
     {
-        $statement = $this->connection->prepare("INSERT INTO car (name, brand, price, color, img, description) VALUES (?,?,?,?,?,?)");
+        $statement = $this->getConnection()->prepare("INSERT INTO car (name, brand, price, color, img, description) VALUES (?,?,?,?,?,?)");
         try {
             $statement->execute([
                 $carResponse->getName(),

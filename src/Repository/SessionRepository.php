@@ -7,30 +7,9 @@ use PDO;
 use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Model\Session;
 
-class SessionRepository
+class SessionRepository extends BaseRepository
 {
-    private PDO $connection;
 
-    public function __construct()
-    {
-        $this->connection = DatabaseConnect::getConnection();
-    }
-
-    /**
-     * @return PDO
-     */
-    public function getConnection(): PDO
-    {
-        return $this->connection;
-    }
-
-    /**
-     * @param PDO $connection
-     */
-    public function setConnection(PDO $connection): void
-    {
-        $this->connection = $connection;
-    }
 
     /**
      * @param Session $session
@@ -39,7 +18,7 @@ class SessionRepository
     public function save(Session $session): bool | Session
     {
         try {
-            $statement = $this->connection->prepare("INSERT INTO sessions (sess_id, user_ID, sess_lifetime) VALUES(?, ?, ?)");
+            $statement = $this->getConnection()->prepare("INSERT INTO sessions (sess_id, user_ID, sess_lifetime) VALUES(?, ?, ?)");
             $insertSuccess = $statement->execute([
                 $session->getSessID(),
                 $session->getUserID(),
@@ -57,7 +36,7 @@ class SessionRepository
      */
     public function deleteById($sessionID): bool
     {
-        $statement = $this->connection->prepare("DELETE FROM sessions WHERE sess_id = '$sessionID' ");
+        $statement = $this->getConnection()->prepare("DELETE FROM sessions WHERE sess_id = '$sessionID' ");
         return $statement->execute();
     }
 
@@ -67,7 +46,7 @@ class SessionRepository
      */
     public function findById($sessionID): Session
     {
-        $statement = $this->connection->prepare("SELECT * FROM sessions WHERE sess_id = '$sessionID' ");
+        $statement = $this->getConnection()->prepare("SELECT * FROM sessions WHERE sess_id = '$sessionID' ");
         $statement->execute();
 
         try {

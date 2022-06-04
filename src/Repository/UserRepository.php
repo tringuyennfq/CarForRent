@@ -7,12 +7,8 @@ use PDO;
 use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Model\User;
 
-class UserRepository
+class UserRepository extends BaseRepository
 {
-    /**
-     * @var PDO
-     */
-    private PDO $connection;
     /**
      * @var User
      */
@@ -20,7 +16,6 @@ class UserRepository
 
     public function __construct(User $user)
     {
-        $this->connection = DatabaseConnect::getConnection();
         $this->user = $user;
     }
 
@@ -30,7 +25,7 @@ class UserRepository
      */
     public function findByUsername($username): ?User
     {
-        $statement = $this->connection->prepare("SELECT * FROM user WHERE user_username = ? ");
+        $statement = $this->getConnection()->prepare("SELECT * FROM user WHERE user_username = ? ");
         $statement->execute([$username]);
 
         try {
@@ -54,7 +49,7 @@ class UserRepository
      */
     public function findById($id): ?User
     {
-        $statement = $this->connection->prepare("SELECT * FROM user WHERE user_ID = ? ");
+        $statement = $this->getConnection()->prepare("SELECT * FROM user WHERE user_ID = ? ");
         $statement->execute([$id]);
 
         try {
@@ -77,7 +72,7 @@ class UserRepository
      */
     public function insertUser(User $user): bool
     {
-        $statement = $this->connection->prepare("INSERT INTO user (user_username, user_password) VALUES(?, ?)");
+        $statement = $this->getConnection()->prepare("INSERT INTO user (user_username, user_password) VALUES(?, ?)");
         try {
             $statement->execute([
                 $user->getUsername(),
