@@ -3,8 +3,6 @@
 namespace Tringuyen\CarForRent\Repository;
 
 use Exception;
-use PDO;
-use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Model\Session;
 
 class SessionRepository extends BaseRepository

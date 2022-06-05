@@ -4,6 +4,7 @@ namespace Tringuyen\CarForRent\Controller;
 
 use Exception;
 use Tringuyen\CarForRent\Bootstrap\View;
+use Tringuyen\CarForRent\Exception\RegisterExeption;
 use Tringuyen\CarForRent\Model\UserRegisterRequest;
 use Tringuyen\CarForRent\Model\UserRegisterResponse;
 use Tringuyen\CarForRent\Service\UserService;
@@ -41,7 +42,7 @@ class UserRegisterController
                 }
                 $errors = $validate;
             }
-        } catch (Exception $exception) {
+        } catch (RegisterExeption $exception) {
             $errors['exception'] = $exception->getMessage();
         }
             return View::renderView('User/register', [

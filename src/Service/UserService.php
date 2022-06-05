@@ -59,14 +59,14 @@ class UserService
      */
     public function register(UserRegisterRequest $userRegisterRequest): bool
     {
-        $existUser = $this->userRepository->findByUsername($userRegisterRequest->getUsername());
-        if ($existUser == null) {
+
             $user = new User();
             $user->setUsername($userRegisterRequest->getUsername());
             $user->setPassword($userRegisterRequest->getPassword());
-            $this->userRepository->insertUser($user);
-            return true;
-        }
-        throw new RegisterExeption('Username already exists');
+            if($this->userRepository->insertUser($user)){
+                return true;
+            }
+            throw new RegisterExeption('Register Error: There was something wrong!');
+
     }
 }

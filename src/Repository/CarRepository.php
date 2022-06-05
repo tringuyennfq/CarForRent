@@ -4,7 +4,6 @@ namespace Tringuyen\CarForRent\Repository;
 
 use PDO;
 use Exception;
-use Tringuyen\CarForRent\Database\DatabaseConnect;
 use Tringuyen\CarForRent\Model\AddCarResponse;
 use Tringuyen\CarForRent\Model\Car;
 

@@ -18,12 +18,12 @@ class CarService
      * @param AddCarResponse $addCarResponse
      * @return bool
      */
-    public function save(AddCarResponse $addCarResponse)
+    public function save(AddCarResponse $addCarResponse): bool
     {
-        $insertCar = $this->carRepository->insertCar($addCarResponse);
-        return $insertCar;
+        return $this->carRepository->insertCar($addCarResponse);
     }
-    public function getAll(int $limit = 10, int $offset = 0)
+
+    public function getAll(int $limit = 10, int $offset = 0): array
     {
         return $this->carRepository->findAll($limit, $offset);
     }
