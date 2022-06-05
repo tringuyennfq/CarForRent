@@ -31,11 +31,12 @@ class UserRepository extends BaseRepository
 
         try {
             if ($row = $statement->fetch()) {
-                $this->user->setId($row['user_ID']);
-                $this->user->setUsername($row['user_username']);
-                $this->user->setPassword($row['user_password']);
+                $user = new User();
+                $user->setId($row['user_ID']);
+                $user->setUsername($row['user_username']);
+                $user->setPassword($row['user_password']);
 
-                return $this->user;
+                return $user;
             } else {
                 return null;
             }
@@ -55,10 +56,11 @@ class UserRepository extends BaseRepository
 
         try {
             if ($row = $statement->fetch()) {
-                $this->user->setId($row['user_ID']);
-                $this->user->setUsername($row['user_username']);
-                $this->user->setPassword($row['user_password']);
-                return $this->user;
+                $user = new User();
+                $user->setId($row['user_ID']);
+                $user->setUsername($row['user_username']);
+                $user->setPassword($row['user_password']);
+                return $user;
             } else {
                 return null;
             }
