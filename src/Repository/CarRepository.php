@@ -34,7 +34,7 @@ class CarRepository extends BaseRepository
         }
     }
 
-    public function findAll(int $limit, int $offset)
+    public function findAll(int $limit = 10, int $offset = 0)
     {
         $statement = $this->getConnection()->prepare("SELECT * FROM car LIMIT :offset,:limit");
         $statement->bindValue('offset', $offset, PDO::PARAM_INT);
