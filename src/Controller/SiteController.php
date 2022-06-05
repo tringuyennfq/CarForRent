@@ -3,15 +3,15 @@
 namespace Tringuyen\CarForRent\Controller;
 
 use Tringuyen\CarForRent\Bootstrap\View;
-use Tringuyen\CarForRent\Repository\CarRepository;
+use Tringuyen\CarForRent\Service\CarService;
 
 class SiteController
 {
-    protected CarRepository $carRepository;
+    protected CarService $carService;
 
-    public function __construct(CarRepository $carRepository)
+    public function __construct(CarService $carService)
     {
-        $this->carRepository = $carRepository;
+        $this->carService = $carService;
     }
 
     /**
@@ -19,7 +19,7 @@ class SiteController
      */
     public function home(): array | string
     {
-        $carList = $this->carRepository->findAll(10, 0);
+        $carList = $this->carService->getAll();
         $params = [
             'name' => "Tri Nguyen",
             'carList' => $carList

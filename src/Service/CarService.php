@@ -23,4 +23,8 @@ class CarService
         $insertCar = $this->carRepository->insertCar($addCarResponse);
         return $insertCar;
     }
+    public function getAll(int $limit = 10, int $offset = 0)
+    {
+        return $this->carRepository->findAll($limit, $offset);
+    }
 }
