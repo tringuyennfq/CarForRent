@@ -7,7 +7,7 @@ use Tringuyen\CarForRent\Database\DatabaseConnect;
 
 class BaseRepository
 {
-    private PDO $connection;
+    private ?PDO $connection = null;
     public function __construct(PDO $connection = null)
     {
         $this->connection = $connection ?? DatabaseConnect::getConnection();
