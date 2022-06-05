@@ -10,6 +10,10 @@ use Tringuyen\CarForRent\Model\Car;
 
 class CarRepository extends BaseRepository
 {
+    public function __construct(PDO $connection = null)
+    {
+        parent::__construct($connection);
+    }
 
     public function findById(int $id): ?Car
     {

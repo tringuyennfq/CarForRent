@@ -14,9 +14,10 @@ class UserRepository extends BaseRepository
      */
     private User $user;
 
-    public function __construct(User $user)
+    public function __construct(User $user,PDO $connection = null)
     {
         $this->user = $user;
+        parent::__construct($connection);
     }
 
     /**
