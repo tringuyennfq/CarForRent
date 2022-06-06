@@ -8,7 +8,7 @@ class AddCarRequest extends Request
 {
     private string $name;
     private string $brand;
-    private int | string $price;
+    private int $price;
     private string $color;
     private string $description;
 
@@ -16,7 +16,7 @@ class AddCarRequest extends Request
     {
         $this->setName($body['name']);
         $this->setBrand($body['brand']);
-        $this->setPrice($body['price']);
+        $this->setPrice(is_numeric($body['price']) ? (int)$body['price'] : null);
         $this->setColor($body['color']);
         $this->setDescription($body['description']);
     }
@@ -59,7 +59,7 @@ class AddCarRequest extends Request
         return $this->price;
     }
 
-    public function setPrice(int | string $price): void
+    public function setPrice(int $price)
     {
         $this->price = $price;
     }

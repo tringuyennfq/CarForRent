@@ -95,4 +95,12 @@ class UserRegisterRequest extends Request
         return $this;
     }
 
+    public function setSelf(string $username, string $password, string $confirmPassword)
+    {
+        $this->setUsername($username);
+        $this->setPassword($password);
+        $this->setConfirmPassword($confirmPassword);
+        $this->setHashPassword($this->hashPassword($this->getPassword(),PASSWORD_BCRYPT));
+    }
+
 }
