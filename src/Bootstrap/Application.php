@@ -62,7 +62,6 @@ class Application
         if (is_string($callback)) {
             return View::renderView($callback);
         }
-
         $currentController = $callback[0];
         $action = $callback[1];
 

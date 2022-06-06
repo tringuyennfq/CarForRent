@@ -4,6 +4,7 @@ namespace Tringuyen\CarForRent\Repository;
 
 use Exception;
 use Tringuyen\CarForRent\Model\User;
+use Tringuyen\CarForRent\Model\UserRegisterRequest;
 
 class UserRepository extends BaseRepository
 {
@@ -71,13 +72,13 @@ class UserRepository extends BaseRepository
      * @param User $user
      * @return bool
      */
-    public function insertUser(User $user): bool
+    public function insertUser(UserRegisterRequest $userRegisterRequest): bool
     {
         $statement = $this->getConnection()->prepare("INSERT INTO user (user_username, user_password) VALUES(?, ?)");
         try {
             $statement->execute([
-                $user->getUsername(),
-                password_hash($user->getPassword(), PASSWORD_BCRYPT)
+                $userRegisterRequest->getUsername(),
+                $userRegisterRequest->getHashPassword()
             ]);
         } catch (Exception $exception) {
             return false;

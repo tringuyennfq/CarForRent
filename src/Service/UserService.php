@@ -59,14 +59,9 @@ class UserService
      */
     public function register(UserRegisterRequest $userRegisterRequest): bool
     {
-
-            $user = new User();
-            $user->setUsername($userRegisterRequest->getUsername());
-            $user->setPassword($userRegisterRequest->getPassword());
-            if($this->userRepository->insertUser($user)){
+            if($this->userRepository->insertUser($userRegisterRequest)){
                 return true;
             }
             throw new RegisterExeption('Register Error: There was something wrong!');
-
     }
 }
