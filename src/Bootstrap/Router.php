@@ -2,7 +2,6 @@
 
 namespace Tringuyen\CarForRent\Bootstrap;
 
-
 class Router
 {
     public static array $routes = [];

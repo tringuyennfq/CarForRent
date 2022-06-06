@@ -15,6 +15,13 @@ class UserLoginRequest extends Request
      */
     protected string $password;
 
+    public function __construct()
+    {
+        $this->username = '';
+        $this->password = '';
+    }
+
+
     /**
      * @return string
      */
@@ -47,12 +54,6 @@ class UserLoginRequest extends Request
         $this->password = $password;
     }
 
-
-    public function __construct()
-    {
-        $this->username = '';
-        $this->password = '';
-    }
 
     /**
      * @param array $params

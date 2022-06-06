@@ -9,8 +9,8 @@ trait PasswordTrait
      * @param int|string|null $alg
      * @return string
      */
-    public function hashPassword(string $password, int|null|string $alg ): string
+    public function hashPassword(string $password, int | null | string $alg): string
     {
-        return password_hash($password,PASSWORD_BCRYPT);
+        return password_hash($password, PASSWORD_BCRYPT);
     }
 }

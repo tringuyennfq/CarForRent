@@ -3,7 +3,6 @@
 namespace Tringuyen\CarForRent\Model;
 
 
-
 use Tringuyen\CarForRent\Http\Request;
 use Tringuyen\CarForRent\Traits\PasswordTrait;
 
@@ -91,7 +90,7 @@ class UserRegisterRequest extends Request
         $this->setUsername($params['username']);
         $this->setPassword($params['password']);
         $this->setConfirmPassword($params['confirmPassword']);
-        $this->setHashPassword($this->hashPassword($this->getPassword(),PASSWORD_BCRYPT));
+        $this->setHashPassword($this->hashPassword($this->getPassword(), PASSWORD_BCRYPT));
         return $this;
     }
 
@@ -100,7 +99,7 @@ class UserRegisterRequest extends Request
         $this->setUsername($username);
         $this->setPassword($password);
         $this->setConfirmPassword($confirmPassword);
-        $this->setHashPassword($this->hashPassword($this->getPassword(),PASSWORD_BCRYPT));
+        $this->setHashPassword($this->hashPassword($this->getPassword(), PASSWORD_BCRYPT));
     }
 
 }

@@ -28,5 +28,4 @@ class BaseRepository
     {
         $this->connection = $connection;
     }
-
 }

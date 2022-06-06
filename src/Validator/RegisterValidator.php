@@ -22,7 +22,7 @@ class RegisterValidator extends Validator
     {
         $val = new Validator();
         $existUser = $this->userRepository->findByUsername($userRegisterRequest->getUsername());
-        if($existUser != null){
+        if ($existUser != null) {
             $val->errors['username'] = 'Username already exists!';
         }
         $val->name('username')->value($userRegisterRequest->getUsername())->required()->min(6)->max(50);

@@ -69,13 +69,13 @@ class Validator
         }
         return $this;
     }
-    public function equal($value){
+    public function equal($value)
+    {
 
-        if($this->value != $value){
-            $this->errors[$this->name] = $this->name.' doesn\'t match';
+        if ($this->value != $value) {
+            $this->errors[$this->name] = $this->name . ' doesn\'t match';
         }
         return $this;
-
     }
     /**
      * Lunghezza minima
@@ -153,5 +153,4 @@ class Validator
             return $this->errors;
         }
     }
-
 }

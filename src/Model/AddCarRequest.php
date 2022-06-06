@@ -96,7 +96,7 @@ class AddCarRequest extends Request
         $this->description = $description;
     }
 
-    public function setSelf(string $name,  string $brand, int $price, string $color, string $description)
+    public function setSelf(string $name, string $brand, int $price, string $color, string $description)
     {
         $this->setName($name);
         $this->setBrand($brand);
