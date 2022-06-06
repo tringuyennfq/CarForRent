@@ -67,10 +67,45 @@ class UserLoginControllerTest extends TestCase
             'password' => $_POST['password'] ?? '',
             'error' => 'Username or Password is invalid!'
         ]);
-        $this->assertEquals($expected,$result);
+        var_dump($expected);
+        die();
+        $this->assertStringContainsString($result,$expected);
 
     }
 
+    /**
+     * @return void
+     * @runInSeparateProcess
+     */
+    public function testLogoutSuccess()
+    {
+        $userServiceMock = $this->getMockBuilder(UserService::class)->disableOriginalConstructor()->getMock();
+        $userLoginRequestMock = $this->getMockBuilder(UserLoginRequest::class)->disableOriginalConstructor()->getMock();
+        $userLoginResponseMock = $this->getMockBuilder(UserLoginResponse::class)->disableOriginalConstructor()->getMock();
+        $userLoginValidatorMock = $this->getMockBuilder(LoginValidator::class)->disableOriginalConstructor()->getMock();
+        $sessionServiceMock = $this->getMockBuilder(SessionService::class)->disableOriginalConstructor()->getMock();
+        $sessionServiceMock->expects($this->once())->method('destroyUser')->willReturn(true);
+
+        $userLoginController = new UserLoginController($userServiceMock,$userLoginRequestMock,$userLoginResponseMock,$userLoginValidatorMock,$sessionServiceMock);
+        $this->assertEquals(View::redirect('/login'),$userLoginController->logout());
+    }
+
+    /**
+     * @return void
+     * @runInSeparateProcess
+     */
+    public function testLogoutFailed()
+    {
+        $userServiceMock = $this->getMockBuilder(UserService::class)->disableOriginalConstructor()->getMock();
+        $userLoginRequestMock = $this->getMockBuilder(UserLoginRequest::class)->disableOriginalConstructor()->getMock();
+        $userLoginResponseMock = $this->getMockBuilder(UserLoginResponse::class)->disableOriginalConstructor()->getMock();
+        $userLoginValidatorMock = $this->getMockBuilder(LoginValidator::class)->disableOriginalConstructor()->getMock();
+        $sessionServiceMock = $this->getMockBuilder(SessionService::class)->disableOriginalConstructor()->getMock();
+        $sessionServiceMock->expects($this->once())->method('destroyUser')->willReturn(false);
+
+        $userLoginController = new UserLoginController($userServiceMock,$userLoginRequestMock,$userLoginResponseMock,$userLoginValidatorMock,$sessionServiceMock);
+        $this->assertEquals(View::redirect('/'),$userLoginController->logout());
+    }
 
 
     /**

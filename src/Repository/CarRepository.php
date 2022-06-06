@@ -27,6 +27,7 @@ class CarRepository extends BaseRepository
                 $car->setBrand($row['brand']);
                 $car->setColor($row['color']);
                 $car->setPrice($row['price']);
+                $car->setImagePath($row['img']);
                 $car->setDescription($row['description']);
                 return $car;
             } else {

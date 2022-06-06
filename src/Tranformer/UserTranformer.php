@@ -10,7 +10,7 @@ class UserTranformer
      * @param User $user
      * @return array
      */
-    public function UserToArray(User $user): array
+    public function userToArray(User $user): array
     {
         return [
             'id' => $user->getId(),

@@ -42,7 +42,7 @@ class UserApiLoginController
                     $this->userLoginResponse = $isLoginSuccess;
                     $accessToken = $this->tokenService->create($this->userLoginResponse->getUser());
                     return $this->userLoginResponse->toJson(
-                        ['data' => $this->userTransformer->UserToArray($this->userLoginResponse->getUser()),
+                        ['data' => $this->userTransformer->userToArray($this->userLoginResponse->getUser()),
                             'message' => $errors,
                             'token' => $accessToken],
                         Response::HTTP_OK

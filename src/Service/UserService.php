@@ -3,7 +3,6 @@
 namespace Tringuyen\CarForRent\Service;
 
 use Tringuyen\CarForRent\Exception\RegisterExeption;
-use Tringuyen\CarForRent\Model\User;
 use Tringuyen\CarForRent\Model\UserLoginRequest;
 use Tringuyen\CarForRent\Model\UserLoginResponse;
 use Tringuyen\CarForRent\Model\UserRegisterRequest;

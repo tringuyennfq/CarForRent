@@ -25,8 +25,8 @@ class RegisterValidator extends Validator
         if($existUser != null){
             $val->errors['username'] = 'Username already exists!';
         }
-        $val->name('username')->value($userRegisterRequest->getUsername())->required()->max(50);
-        $val->name('password')->value($userRegisterRequest->getPassword())->customPattern('[A-Za-z0-9-.;_!#@]{5,15}')->required();
+        $val->name('username')->value($userRegisterRequest->getUsername())->required()->min(6)->max(50);
+        $val->name('password')->value($userRegisterRequest->getPassword())->required()->min(6)->max(50);
 
         $val->name('confirmPassword')->value($userRegisterRequest->getConfirmPassword())->equal($userRegisterRequest->getPassword())->required();
         if ($val->isSuccess()) {

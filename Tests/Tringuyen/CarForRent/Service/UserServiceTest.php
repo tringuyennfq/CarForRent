@@ -5,9 +5,11 @@ namespace Test\Tringuyen\CarForRent\Service;
 use JetBrains\PhpStorm\ArrayShape;
 use PHPUnit\Framework\TestCase;
 use Tringuyen\CarForRent\Exception\LoginException;
+use Tringuyen\CarForRent\Exception\RegisterExeption;
 use Tringuyen\CarForRent\Model\User;
 use Tringuyen\CarForRent\Model\UserLoginRequest;
 use Tringuyen\CarForRent\Model\UserLoginResponse;
+use Tringuyen\CarForRent\Model\UserRegisterRequest;
 use Tringuyen\CarForRent\Repository\UserRepository;
 use Tringuyen\CarForRent\Service\UserService;
 
@@ -112,5 +114,31 @@ class UserServiceTest extends TestCase
                 'expected'=>null
             ]
         ];
+    }
+
+    /**
+     * @return void
+     * @throws RegisterExeption
+     */
+    public function testRegisterSuccess(): void
+    {
+        $userRepositoryMock = $this->getMockBuilder(UserRepository::class)->disableOriginalConstructor()->getMock();
+        $userRepositoryMock->expects($this->once())->method('insertUser')->willReturn(true);
+        $userServiceTest = new UserService($userRepositoryMock);
+        $userRegisterRequest = new UserRegisterRequest();
+        $this->assertTrue($userServiceTest->register($userRegisterRequest));
+    }
+    /**
+     * @return void
+     * @throws RegisterExeption
+     */
+    public function testRegisterFailed(): void
+    {
+        $userRepositoryMock = $this->getMockBuilder(UserRepository::class)->disableOriginalConstructor()->getMock();
+        $userRepositoryMock->expects($this->once())->method('insertUser')->willReturn(false);
+        $userServiceTest = new UserService($userRepositoryMock);
+        $userRegisterRequest = new UserRegisterRequest();
+        $this->expectException(RegisterExeption::class);
+        $userServiceTest->register($userRegisterRequest);
     }
 }

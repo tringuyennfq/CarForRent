@@ -85,4 +85,5 @@ class UserRepository extends BaseRepository
         }
         return true;
     }
+
 }

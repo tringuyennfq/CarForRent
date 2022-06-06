@@ -8,7 +8,7 @@ class AddCarRequest extends Request
 {
     private string $name;
     private string $brand;
-    private int $price;
+    private ?int $price;
     private string $color;
     private string $description;
 
@@ -94,5 +94,14 @@ class AddCarRequest extends Request
     public function setDescription(string $description): void
     {
         $this->description = $description;
+    }
+
+    public function setSelf(string $name,  string $brand, int $price, string $color, string $description)
+    {
+        $this->setName($name);
+        $this->setBrand($brand);
+        $this->setPrice($price);
+        $this->setColor($color);
+        $this->setDescription($description);
     }
 }

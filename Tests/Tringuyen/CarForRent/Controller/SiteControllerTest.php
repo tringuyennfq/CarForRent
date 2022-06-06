@@ -3,7 +3,9 @@
 namespace Test\Tringuyen\CarForRent\Controller;
 
 use PHPUnit\Framework\TestCase;
+use Tringuyen\CarForRent\Bootstrap\View;
 use Tringuyen\CarForRent\Controller\SiteController;
+use Tringuyen\CarForRent\Service\CarService;
 
 class SiteControllerTest extends TestCase
 {
@@ -12,8 +14,11 @@ class SiteControllerTest extends TestCase
      */
     public function testHome()
     {
-        $controllerTest = new SiteController();
+        $carServiceMock = $this->getMockBuilder(CarService::class)->disableOriginalConstructor()->getMock();
+        $carServiceMock->expects($this->once())->method('getAll')->willReturn([]);
+        $controllerTest = new SiteController($carServiceMock);
         $result = $controllerTest->home();
-        $this->assertNotNull($result);
+        $expected  = View::renderView('home',[]);
+        $this->assertEquals($expected,$result);
     }
 }
