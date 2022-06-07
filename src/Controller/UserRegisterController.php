@@ -2,12 +2,11 @@
 
 namespace Tringuyen\CarForRent\Controller;
 
-use Exception;
 use Tringuyen\CarForRent\Bootstrap\View;
 use Tringuyen\CarForRent\Exception\RegisterExeption;
-use Tringuyen\CarForRent\Model\UserRegisterRequest;
-use Tringuyen\CarForRent\Model\UserRegisterResponse;
 use Tringuyen\CarForRent\Service\UserService;
+use Tringuyen\CarForRent\Transfer\UserRegisterRequest;
+use Tringuyen\CarForRent\Transformer\UserRegisterResponse;
 use Tringuyen\CarForRent\Validator\RegisterValidator;
 
 class UserRegisterController

@@ -2,9 +2,9 @@
 
 namespace Tringuyen\CarForRent\Repository;
 
-use PDO;
 use Exception;
-use Tringuyen\CarForRent\Model\AddCarResponse;
+use PDO;
+use Tringuyen\CarForRent\Transformer\AddCarResponse;
 use Tringuyen\CarForRent\Model\Car;
 
 class CarRepository extends BaseRepository

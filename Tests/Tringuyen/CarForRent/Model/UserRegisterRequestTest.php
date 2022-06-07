@@ -3,7 +3,7 @@
 namespace Test\Tringuyen\CarForRent\Model;
 
 use PHPUnit\Framework\TestCase;
-use Tringuyen\CarForRent\Model\UserRegisterRequest;
+use Tringuyen\CarForRent\Transfer\UserRegisterRequest;
 
 class UserRegisterRequestTest extends TestCase
 {

@@ -3,8 +3,8 @@
 namespace Test\Tringuyen\CarForRent\Repository;
 
 use PHPUnit\Framework\TestCase;
-use Tringuyen\CarForRent\Model\Car;
 use Tringuyen\CarForRent\Repository\CarRepository;
+use Tringuyen\CarForRent\Transfer\Car;
 
 class CarRepositoryTest extends TestCase
 {

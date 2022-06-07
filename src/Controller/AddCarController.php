@@ -5,10 +5,10 @@ namespace Tringuyen\CarForRent\Controller;
 use Exception;
 use Tringuyen\CarForRent\Bootstrap\View;
 use Tringuyen\CarForRent\Exception\UploadFileException;
-use Tringuyen\CarForRent\Model\AddCarRequest;
-use Tringuyen\CarForRent\Model\AddCarResponse;
 use Tringuyen\CarForRent\Service\CarService;
 use Tringuyen\CarForRent\Service\FileUploadService;
+use Tringuyen\CarForRent\Transfer\AddCarRequest;
+use Tringuyen\CarForRent\Transfer\AddCarResponse;
 use Tringuyen\CarForRent\Validator\AddCarValidator;
 
 class AddCarController

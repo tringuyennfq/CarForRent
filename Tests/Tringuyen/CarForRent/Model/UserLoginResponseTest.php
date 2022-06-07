@@ -5,7 +5,7 @@ namespace Test\Tringuyen\CarForRent\Model;
 
 use PHPUnit\Framework\TestCase;
 use Tringuyen\CarForRent\Model\User;
-use Tringuyen\CarForRent\Model\UserLoginResponse;
+use Tringuyen\CarForRent\Transformer\UserLoginResponse;
 
 class UserLoginResponseTest extends TestCase
 {

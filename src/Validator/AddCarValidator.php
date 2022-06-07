@@ -4,7 +4,7 @@ namespace Tringuyen\CarForRent\Validator;
 
 use Tringuyen\CarForRent\Bootstrap\Application;
 use Tringuyen\CarForRent\Exception\UploadFileException;
-use Tringuyen\CarForRent\Model\AddCarRequest;
+use Tringuyen\CarForRent\Transfer\AddCarRequest;
 
 class AddCarValidator
 {

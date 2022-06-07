@@ -3,10 +3,10 @@
 namespace Test\Tringuyen\CarForRent\Validator;
 
 use JetBrains\PhpStorm\ArrayShape;
-use Tringuyen\CarForRent\Exception\ValidationException;
-use Tringuyen\CarForRent\Model\UserLoginRequest;
-use Tringuyen\CarForRent\Validator\LoginValidator;
 use PHPUnit\Framework\TestCase;
+use Tringuyen\CarForRent\Exception\ValidationException;
+use Tringuyen\CarForRent\Transfer\UserLoginRequest;
+use Tringuyen\CarForRent\Validator\LoginValidator;
 
 class LoginValidatorTest extends TestCase
 {

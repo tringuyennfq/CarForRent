@@ -3,7 +3,7 @@
 namespace Test\Tringuyen\CarForRent\Model;
 
 use PHPUnit\Framework\TestCase;
-use Tringuyen\CarForRent\Model\AddCarResponse;
+use Tringuyen\CarForRent\Transfer\AddCarResponse;
 
 class AddCarResponseTest extends TestCase
 {

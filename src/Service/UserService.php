@@ -3,10 +3,10 @@
 namespace Tringuyen\CarForRent\Service;
 
 use Tringuyen\CarForRent\Exception\RegisterExeption;
-use Tringuyen\CarForRent\Model\UserLoginRequest;
-use Tringuyen\CarForRent\Model\UserLoginResponse;
-use Tringuyen\CarForRent\Model\UserRegisterRequest;
 use Tringuyen\CarForRent\Repository\UserRepository;
+use Tringuyen\CarForRent\Transfer\UserLoginRequest;
+use Tringuyen\CarForRent\Transformer\UserLoginResponse;
+use Tringuyen\CarForRent\Transfer\UserRegisterRequest;
 
 class UserService
 {

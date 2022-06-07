@@ -4,7 +4,7 @@ namespace Test\Tringuyen\CarForRent\Transformer;
 
 use PHPUnit\Framework\TestCase;
 use Tringuyen\CarForRent\Model\User;
-use Tringuyen\CarForRent\Tranformer\UserTranformer;
+use Tringuyen\CarForRent\Transformer\UserTranformer;
 
 class UserTransformerTest extends TestCase
 {

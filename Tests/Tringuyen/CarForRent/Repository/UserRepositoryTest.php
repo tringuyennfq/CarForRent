@@ -4,8 +4,8 @@ namespace Test\Tringuyen\CarForRent\Repository;
 
 
 use PHPUnit\Framework\TestCase;
-use Tringuyen\CarForRent\Model\User;
 use Tringuyen\CarForRent\Repository\UserRepository;
+use Tringuyen\CarForRent\Model\User;
 
 class UserRepositoryTest extends TestCase
 {

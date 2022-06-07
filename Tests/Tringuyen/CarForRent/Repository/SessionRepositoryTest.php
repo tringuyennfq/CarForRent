@@ -4,8 +4,8 @@ namespace Test\Tringuyen\CarForRent\Repository;
 
 use PHPUnit\Framework\TestCase;
 use Tringuyen\CarForRent\Database\DatabaseConnect;
-use Tringuyen\CarForRent\Model\Session;
 use Tringuyen\CarForRent\Repository\SessionRepository;
+use Tringuyen\CarForRent\Model\Session;
 
 class SessionRepositoryTest extends TestCase
 {

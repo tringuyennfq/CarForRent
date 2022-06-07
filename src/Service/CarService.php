@@ -2,8 +2,8 @@
 
 namespace Tringuyen\CarForRent\Service;
 
-use Tringuyen\CarForRent\Model\AddCarResponse;
 use Tringuyen\CarForRent\Repository\CarRepository;
+use Tringuyen\CarForRent\Transfer\AddCarResponse;
 
 class CarService
 {

@@ -3,7 +3,7 @@
 namespace Tringuyen\CarForRent\Validator;
 
 use Tringuyen\CarForRent\Exception\ValidationException;
-use Tringuyen\CarForRent\Model\UserLoginRequest;
+use Tringuyen\CarForRent\Transfer\UserLoginRequest;
 
 class LoginValidator
 {

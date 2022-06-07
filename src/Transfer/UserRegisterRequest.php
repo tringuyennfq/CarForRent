@@ -1,6 +1,6 @@
 <?php
 
-namespace Tringuyen\CarForRent\Model;
+namespace Tringuyen\CarForRent\Transfer;
 
 
 use Tringuyen\CarForRent\Http\Request;

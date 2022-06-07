@@ -3,15 +3,13 @@
 namespace Test\Tringuyen\CarForRent\Controller;
 
 use PHPUnit\Framework\TestCase;
-use PHPUnit\Util\Exception;
 use Tringuyen\CarForRent\Bootstrap\View;
 use Tringuyen\CarForRent\Controller\UserLoginController;
-use Tringuyen\CarForRent\Exception\ValidationException;
-use Tringuyen\CarForRent\Model\User;
-use Tringuyen\CarForRent\Model\UserLoginRequest;
-use Tringuyen\CarForRent\Model\UserLoginResponse;
 use Tringuyen\CarForRent\Service\SessionService;
 use Tringuyen\CarForRent\Service\UserService;
+use Tringuyen\CarForRent\Model\User;
+use Tringuyen\CarForRent\Transfer\UserLoginRequest;
+use Tringuyen\CarForRent\Transformer\UserLoginResponse;
 use Tringuyen\CarForRent\Validator\LoginValidator;
 
 class UserLoginControllerTest extends TestCase

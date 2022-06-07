@@ -4,14 +4,13 @@ namespace Test\Tringuyen\CarForRent\Service;
 
 use JetBrains\PhpStorm\ArrayShape;
 use PHPUnit\Framework\TestCase;
-use Tringuyen\CarForRent\Exception\LoginException;
 use Tringuyen\CarForRent\Exception\RegisterExeption;
-use Tringuyen\CarForRent\Model\User;
-use Tringuyen\CarForRent\Model\UserLoginRequest;
-use Tringuyen\CarForRent\Model\UserLoginResponse;
-use Tringuyen\CarForRent\Model\UserRegisterRequest;
 use Tringuyen\CarForRent\Repository\UserRepository;
 use Tringuyen\CarForRent\Service\UserService;
+use Tringuyen\CarForRent\Model\User;
+use Tringuyen\CarForRent\Transfer\UserLoginRequest;
+use Tringuyen\CarForRent\Transformer\UserLoginResponse;
+use Tringuyen\CarForRent\Transfer\UserRegisterRequest;
 
 class UserServiceTest extends TestCase
 {

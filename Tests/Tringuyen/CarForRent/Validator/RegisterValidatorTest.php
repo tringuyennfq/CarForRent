@@ -3,9 +3,9 @@
 namespace Test\Tringuyen\CarForRent\Validator;
 
 use PHPUnit\Framework\TestCase;
-use Tringuyen\CarForRent\Model\User;
-use Tringuyen\CarForRent\Model\UserRegisterRequest;
 use Tringuyen\CarForRent\Repository\UserRepository;
+use Tringuyen\CarForRent\Model\User;
+use Tringuyen\CarForRent\Transfer\UserRegisterRequest;
 use Tringuyen\CarForRent\Validator\RegisterValidator;
 
 class RegisterValidatorTest extends TestCase

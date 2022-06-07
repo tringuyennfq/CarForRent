@@ -2,9 +2,9 @@
 
 namespace Tringuyen\CarForRent\Service;
 
-use Tringuyen\CarForRent\Model\Session;
 use Tringuyen\CarForRent\Repository\SessionRepository;
 use Tringuyen\CarForRent\Repository\UserRepository;
+use Tringuyen\CarForRent\Model\Session;
 
 class SessionService
 {

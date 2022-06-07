@@ -1,6 +1,6 @@
 <?php
 
-namespace Tringuyen\CarForRent\Tranformer;
+namespace Tringuyen\CarForRent\Transformer;
 
 use Tringuyen\CarForRent\Model\User;
 

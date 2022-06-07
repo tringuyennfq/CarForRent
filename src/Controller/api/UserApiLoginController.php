@@ -3,11 +3,11 @@
 namespace Tringuyen\CarForRent\Controller\api;
 
 use Tringuyen\CarForRent\Http\Response;
-use Tringuyen\CarForRent\Model\UserLoginRequest;
-use Tringuyen\CarForRent\Model\UserLoginResponse;
 use Tringuyen\CarForRent\Service\TokenService;
 use Tringuyen\CarForRent\Service\UserService;
-use Tringuyen\CarForRent\Tranformer\UserTranformer;
+use Tringuyen\CarForRent\Transfer\UserLoginRequest;
+use Tringuyen\CarForRent\Transformer\UserLoginResponse;
+use Tringuyen\CarForRent\Transformer\UserTranformer;
 use Tringuyen\CarForRent\Validator\LoginValidator;
 
 class UserApiLoginController

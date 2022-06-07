@@ -4,7 +4,7 @@ namespace Tringuyen\CarForRent\Repository;
 
 use Exception;
 use Tringuyen\CarForRent\Model\User;
-use Tringuyen\CarForRent\Model\UserRegisterRequest;
+use Tringuyen\CarForRent\Transfer\UserRegisterRequest;
 
 class UserRepository extends BaseRepository
 {

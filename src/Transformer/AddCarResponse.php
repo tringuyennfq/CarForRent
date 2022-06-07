@@ -1,6 +1,6 @@
 <?php
 
-namespace Tringuyen\CarForRent\Model;
+namespace Tringuyen\CarForRent\Transformer;
 
 use Tringuyen\CarForRent\Http\Response;
 

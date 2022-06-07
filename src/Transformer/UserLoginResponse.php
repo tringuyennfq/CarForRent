@@ -1,8 +1,9 @@
 <?php
 
-namespace Tringuyen\CarForRent\Model;
+namespace Tringuyen\CarForRent\Transformer;
 
 use Tringuyen\CarForRent\Http\Response;
+use Tringuyen\CarForRent\Model\User;
 
 class UserLoginResponse extends Response
 {

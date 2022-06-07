@@ -2,8 +2,8 @@
 
 namespace Tringuyen\CarForRent\Validator;
 
-use Tringuyen\CarForRent\Model\UserRegisterRequest;
 use Tringuyen\CarForRent\Repository\UserRepository;
+use Tringuyen\CarForRent\Transfer\UserRegisterRequest;
 
 class RegisterValidator extends Validator
 {

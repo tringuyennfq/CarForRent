@@ -2,15 +2,13 @@
 
 namespace Test\Tringuyen\CarForRent\Service;
 
-use http\Cookie;
-use PHP_CodeSniffer\Standards\Generic\Sniffs\Functions\OpeningFunctionBraceKernighanRitchieSniff;
 use PHPUnit\Framework\TestCase;
-use Tringuyen\CarForRent\Model\Session;
-use Tringuyen\CarForRent\Model\User;
 use Tringuyen\CarForRent\Repository\SessionRepository;
 use Tringuyen\CarForRent\Repository\UserRepository;
 use Tringuyen\CarForRent\Service\CookieService;
 use Tringuyen\CarForRent\Service\SessionService;
+use Tringuyen\CarForRent\Model\Session;
+use Tringuyen\CarForRent\Model\User;
 
 
 class SessionServiceTest extends TestCase
