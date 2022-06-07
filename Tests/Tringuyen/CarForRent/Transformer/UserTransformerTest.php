@@ -20,6 +20,6 @@ class UserTransformerTest extends TestCase
             'id' => $user->getId(),
             'username' => $user->getUsername()
         ];
-        $this->assertEquals($expectedArray,$resultArray);
+        $this->assertEquals($expectedArray, $resultArray);
     }
 }
