@@ -1,36 +1,44 @@
-# carForRent
-A beautiful Car renting website where you can log in and log out
+# About the project
+This Car for rent project was build in 3 weeks by PHP and MySQL with the guide of Mr. Bang and Mr. Tinh. Following MVC structure and have many components build from scratch. Deployed on AWS EC2 and using S3 for file storage
+
+## Installation
+Install Nginx following this [article](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04).
+
+Create account on [AWS](https://aws.amazon.com/) to use the S3 service.
+
+Clone project 
+```bash
+$ git clone https://github.com/tringuyennfq/CarForRent.git
+```
+Install Composer
+```bash
+$ composer install
+```
+
+## Usage
+
+Install PHP Dotenv
+
+```bash
+$ composer require vlucas/phpdotenv
+```
+Install PHP JWT
+
+```bash
+$ composer require firebase/php-jwt
+```
+
+Install AWS SDK for PHP
+```bash
+$ composer require aws/aws-sdk-php
+```
+Don't forget to create an .env file and edit 
 
 
-## * PHP UNIT
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-#### + Download:
+Please make sure to update tests as appropriate.
 
-➜ composer require --dev phpunit/phpunit ^9
-
-➜ ./vendor/bin/phpunit --version
-PHPUnit 9.0.0 by Sebastian Bergmann and contributors.
-
-#### + Test:
-
-➜ ./vendor/bin/phpunit tests
-
-## * PHPCS
-➜  phpcbf --standard=PSR12 ./src
-
-## * PSALM
-
-####  The latest version of Psalm requires PHP >= 7.1 and Composer.
-
-➜ composer require --dev vimeo/psalm
-
-#### Generate a config file:
-
-➜ ./vendor/bin/psalm --init
-
-Psalm will scan your project and figure out an appropriate error level for your codebase.
-
-#### Then run Psalm:
-
-➜ ./vendor/bin/psalm
-➜ ./vendor/bin/psalm --show-info=true
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
