@@ -14,7 +14,8 @@ class AddCarValidator
         $val->name('name')->value($addCarRequest->getName())->required()->max(250);
         $val->name('brand')->value($addCarRequest->getBrand())->required()->max(150);
         $val->name('price')->value($addCarRequest->getPrice())->required()->is_numeric();
-        $val->name('color')->value($addCarRequest->getDescription())->required()->max(100);
+        $val->name('color')->value($addCarRequest->getColor())->required()->max(100);
+        $val->name('description')->value($addCarRequest->getDescription())->required()->max(500);
         if ($val->isSuccess()) {
             return true;
         }

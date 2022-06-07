@@ -34,7 +34,7 @@ class UserLoginController
         }
         try {
             $errors = '';
-            if ($this->userLoginRequest->getMethod() === 'POST') {
+            if ($this->userLoginRequest->isPostMethod()) {
                 $this->userLoginRequest->fromArray($this->userLoginRequest->getBody());
                 $this->userLoginValidator->validateUserLogin($this->userLoginRequest);
                 $isLoginSuccess = $this->userService->login($this->userLoginRequest);

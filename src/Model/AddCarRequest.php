@@ -59,7 +59,7 @@ class AddCarRequest extends Request
         return $this->price;
     }
 
-    public function setPrice(int $price)
+    public function setPrice(?int $price)
     {
         $this->price = $price;
     }

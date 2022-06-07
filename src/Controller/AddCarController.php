@@ -29,34 +29,27 @@ class AddCarController
 
     public function addCar()
     {
-        if (!isset($_SESSION['username']) || $_SESSION['username'] != 'khaitri') {
-            return View::redirect('404');
-        }
         try {
             $errors = [];
             $success = false;
-            if ($this->carRequest->getMethod() === 'POST') {
+            if ($this->carRequest->isPostMethod()) {
                 $requestBody = $this->carRequest->getBody();
                 $this->carRequest->fromArray($requestBody);
                 $this->carValidator->validateImageUpload($_FILES['image'], 2);
-                $validate = $this->carValidator->validateCarAdd($this->carRequest);
-                if ($validate === true) {
-                    $uploadImage = $this->fileUploadService->uploadImage($_FILES['image']);
-                    $this->carResponse->fromArray([...$requestBody,'image' => $uploadImage]);
+                $validateCar = $this->carValidator->validateCarAdd($this->carRequest);
+                $imageUpload = $this->fileUploadService->uploadImage($_FILES['image']);
+                if ($validateCar === true && $imageUpload != null) {
+                    $this->carResponse->fromArray([...$requestBody,'image' => $imageUpload]);
                     $this->carService->save($this->carResponse);
                     $success = true;
                 }
-                $errors = $validate;
+                $errors = $validateCar;
             }
         } catch (UploadFileException $exception) {
             $errors['image'] = $exception->getMessage();
         } catch (Exception $exception) {
             $errors['exception'] = $exception->getMessage();
         }
-        return View::renderView('addCar', [
-            'title' => 'AddCar',
-            'error' => $errors,
-            'success' => $success
-        ]);
+        return View::renderView('addCar', ['title' => 'AddCar', 'error' => $errors, 'success' => $success]);
     }
 }

@@ -25,6 +25,14 @@ class Request
         return $_SERVER['REQUEST_METHOD'];
     }
 
+    public function isGetMethod()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'GET';
+    }
+    public function isPostMethod()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'POST';
+    }
     /**
      * @return array
      */

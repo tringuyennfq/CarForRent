@@ -33,7 +33,7 @@ class UserRegisterController
         try {
             $errors = [];
             $success = false;
-            if ($this->userRegisterRequest->getMethod() === 'POST') {
+            if ($this->userRegisterRequest->isPostMethod()) {
                 $this->userRegisterRequest->fromArray($this->userRegisterRequest->getBody());
                 $validate = $this->userRegisterValidator->validateUserRegister($this->userRegisterRequest);
                 if ($validate === true) {
