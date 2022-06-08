@@ -8,7 +8,7 @@ use Tringuyen\CarForRent\Exception\UploadFileException;
 use Tringuyen\CarForRent\Service\CarService;
 use Tringuyen\CarForRent\Service\FileUploadService;
 use Tringuyen\CarForRent\Transfer\AddCarRequest;
-use Tringuyen\CarForRent\Transfer\AddCarResponse;
+use Tringuyen\CarForRent\Transformer\AddCarResponse;
 use Tringuyen\CarForRent\Validator\AddCarValidator;
 
 class AddCarController

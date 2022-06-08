@@ -38,7 +38,7 @@ class CarRepository extends BaseRepository
         }
     }
 
-    public function findAll(int $limit = 10, int $offset = 0)
+    public function findAll(int $limit = 10, int $offset = 0): array
     {
         $statement = $this->getConnection()->prepare("SELECT * FROM car LIMIT :offset,:limit");
         $statement->bindValue('offset', $offset, PDO::PARAM_INT);
@@ -60,7 +60,7 @@ class CarRepository extends BaseRepository
         return $carList;
     }
 
-    public function insertCar(AddCarResponse $carResponse)
+    public function insertCar(AddCarResponse $carResponse): bool
     {
         $statement = $this->getConnection()->prepare("INSERT INTO car (name, brand, price, color, img, description) VALUES (?,?,?,?,?,?)");
         try {

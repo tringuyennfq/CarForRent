@@ -7,7 +7,6 @@ use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
 use Dotenv\Dotenv;
 use Tringuyen\CarForRent\Bootstrap\Application;
-use Tringuyen\CarForRent\Http\Request;
 
 class FileUploadService
 {

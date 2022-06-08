@@ -3,7 +3,7 @@
 namespace Tringuyen\CarForRent\Service;
 
 use Tringuyen\CarForRent\Repository\CarRepository;
-use Tringuyen\CarForRent\Transfer\AddCarResponse;
+use Tringuyen\CarForRent\Transformer\AddCarResponse;
 
 class CarService
 {
